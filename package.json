@@ -1,0 +1,71 @@
+{
+  "name": "vue-ele-admin-pure",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Mole <731913218@qq.com>",
+  "scripts": {
+    "serve": "npm run lint && vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build:test": "vue-cli-service build --mode test",
+    "build:uat": "vue-cli-service build --mode uat",
+    "build:prod": "vue-cli-service build --mode prod && npm run build",
+    "mkdir": "if not exist \".\\dist\\package\" (cd dist && mkdir package && cd package && mkdir test uat prod)",
+    "war:test": "npm run mkdir && cd dist/test && jar -cvf ../package/test/projectName.war .",
+    "war:uat": "cd dist/uat && jar -cvf ../package/uat/projectName.war .",
+    "war:prod": "cd dist/prod && jar -cvf ../package/prod/projectName.war .",
+    "server:test": "node localServer.js --mode test",
+    "server:uat": "node localServer.js --mode uat",
+    "server:prod": "node localServer.js --mode prod",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "animate.css": "^3.7.0",
+    "axios": "^0.18.0",
+    "core-js": "^2.6.5",
+    "echarts": "^4.2.1",
+    "element-ui": "^2.4.5",
+    "js-cookie": "^2.2.0",
+    "moment": "^2.24.0",
+    "nprogress": "^0.2.0",
+    "register-service-worker": "^1.6.2",
+    "vue": "^2.6.10",
+    "vue-content-loader": "^0.2.1",
+    "vue-i18n": "^8.10.0",
+    "vue-meta": "^1.6.0",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.6.0",
+    "@vue/cli-plugin-eslint": "^3.6.0",
+    "@vue/cli-plugin-pwa": "^3.6.0",
+    "@vue/cli-plugin-unit-jest": "^3.6.0",
+    "@vue/cli-service": "^3.6.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-component": "^1.1.1",
+    "connect-history-api-fallback": "^1.6.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "express": "^4.16.4",
+    "lint-staged": "^8.1.5",
+    "mockjs": "^1.0.1-beta3",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.1.0",
+    "vue-cli-plugin-element": "^1.0.1",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}

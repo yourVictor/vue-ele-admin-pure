@@ -1,0 +1,40 @@
+.search-form{
+  width: 100%;
+  padding: 20px 0 20px 12px;
+  margin-bottom: 24px;
+  background-color: #f8f8f8;
+  box-sizing: border-box;
+  .el-row{
+    max-width: 100%;
+  }
+  .el-form-item{
+    margin-bottom: 16px;
+    .el-form-item__content{
+      height: 40px;
+    }
+    .el-select{
+      width: 100%;
+    }
+  }
+
+  .btn-item{
+    margin-bottom: 0;
+
+    span.btn-reset{
+      color: #a1a1a1;
+      font-size: 13px;
+      padding: 0 12px;
+      cursor: pointer;
+
+      &:hover{
+        opacity: 0.85;
+      }
+    }
+  }
+  .el-date-editor--daterange.el-input,
+  .el-date-editor--daterange.el-input__inner,
+  .el-date-editor--timerange.el-input,
+  .el-date-editor--timerange.el-input__inner{
+    width: 100%;
+  }
+}

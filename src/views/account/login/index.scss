@@ -1,0 +1,45 @@
+@import
+"../../../styles/_variables",
+"../../../styles/_mixins";
+.login-container{
+  @include flex;
+  @include center;
+
+  height: 100%;
+  vertical-align: middle;
+  background: url("../../../assets/bg/page_login.jpg") no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+}
+.login-form{
+  width: 80%;
+  max-width: 360px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.6);
+  .el-input__inner{
+    background: rgba(255,255,255,0.7);
+  }
+
+  .form-title{
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+    padding-bottom: 24px;
+  }
+  .el-form-item{
+    margin-bottom: 30px;
+
+    &:last-child{
+      margin-bottom: 10px;
+    }
+  }
+  .el-input__prefix{
+    color: #777;
+  }
+  .el-input__suffix{
+    color: #999;
+  }
+  .el-input--prefix .el-input__inner {
+    padding-left: 32px;
+  }
+}

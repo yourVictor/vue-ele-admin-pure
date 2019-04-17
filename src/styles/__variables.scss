@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+//global css---------------------------------------------------
+$red: 10;
+$green: 160;
+$blue: 100;
+$color: rgb(25, 125, 0);
+
+
+//body css set-------------------------------------------------
+$normalColor: #494949;
+$subColor: #8f8f8f;
+$inputHolderColor: #d9d9d9;
+$borderColor: #e4e4e4;
+$subBorderColor: #efefef;
+$shadowColor: rgba(210, 210, 210, 0.54);
+$activeColor: rgb($red,$green,$blue);
+$bodyBgColor: #fff;
+$scrollBarColor: rgba(0, 0, 0, 0.4);
+$asideTheme: #fff;
+$asideDarkTheme: #4b4b4b;
+
+$normalFontSize: 12px;
+$normalIconFontSize: 24px;
+$normalLineHeight: 1;
+$scrollBarSize: 8;
+$sidebarMinWidth: 46px;
+$sidebarMaxWidth: 200px;
+$headerBarHeight: 50px;

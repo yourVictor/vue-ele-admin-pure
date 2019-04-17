@@ -1,0 +1,139 @@
+@import "_variables";
+
+//
+// @name: flex
+// @access: public
+// @param[$direction]: row or column
+//
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+@mixin flex-item{
+  flex-shrink:0;
+}
+@mixin sub-item($size: 1, $direction: row){
+  flex-grow: $size;
+  @if $direction == 'row' {
+    width: 1%
+  }
+  @else {
+    width: 100%;
+    height: 1%;
+  }
+}
+
+@mixin a-center{
+  align-items: center;
+}
+@mixin j-center{
+  justify-content: center;
+}
+@mixin center{
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+@mixin a-end{
+  align-items: flex-end;
+}
+@mixin j-end{
+  justify-content: flex-end;
+}
+
+@mixin flex-container($direction: row){
+  @include flex($direction);
+
+  &>.flex-item{
+    @include flex-item;
+  }
+  &>.sub-item{
+    @include sub-item($direction: $direction);
+    &2{
+      @include sub-item($size: 2, $direction: $direction);
+    }
+    &3{
+      @include sub-item($size: 3, $direction: $direction);
+    }
+    &4{
+      @include sub-item($size: 4, $direction: $direction);
+    }
+  }
+}
+
+//
+// @name: textEllipsis
+// @access: public
+//
+@mixin text-ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+//
+// @name: userSelect
+// @access: public
+//
+@mixin user-select{
+  user-select: text;
+  *{
+    user-select: text;
+  }
+}
+
+//
+// @name: scrollbar
+// @access: public
+// @author: 731913218@qq.com
+// @param[$size]: number
+// @param[$color]: color value
+//
+@mixin scrollbar($size: $scrollBarSize, $color: $scrollBarColor){
+  overflow: auto;
+
+  &::-webkit-scrollbar{
+    width: $size+px;
+    height: $size+px;
+    background-color: transparent;
+  }
+  &:hover{
+    &::-webkit-scrollbar{
+      width: $size+px;
+      height: $size+px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: $size/2+px;
+      background-color: $color;
+    }
+  }
+}
+
+//
+// @name: transition
+// @access: public
+// @param[$time]: time value
+//
+@mixin transition($time: 0.25s){
+  transition: all $time cubic-bezier(0.42,0,0.58,1);
+}
+
+//
+// @name: mask
+// @access: public
+// @param[$opacity]: 0-1
+// @param[$zIndex]: number
+//
+@mixin mask($opacity: 0.5,$zIndex: 999){
+  opacity: $opacity;
+  background: #000;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: $zIndex;
+  display: none;
+}

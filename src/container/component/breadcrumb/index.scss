@@ -1,0 +1,16 @@
+@import
+"../../../styles/_variables";
+
+.app-breadcrumb{
+  margin: 0 24px;
+
+  .no-redirect{
+    color: #979797;
+  }
+
+  .el-breadcrumb__inner a:hover,
+  .el-breadcrumb__inner.is-link:hover {
+    color: $activeColor;
+    cursor: pointer;
+  }
+}

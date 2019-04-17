@@ -1,0 +1,66 @@
+@import
+"../../../styles/_variables",
+"../../../styles/_mixins";
+.el-aside{
+  @include flex(column);
+  width: $sidebarMaxWidth !important;
+  transition: width 300ms;
+  box-shadow: 0 4px 12px #f2f2f2;
+  background: $asideTheme;
+  position: relative;
+  z-index: 9;
+
+  .app-logo{
+    @include flex;
+    @include center;
+    color: #333;
+    font-size: 16px;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    height: $headerBarHeight;
+    margin-bottom: 50px;
+    img {
+      height: 40%;
+    }
+    div {
+      @include text-ellipsis;
+      margin-left: 8px;
+    }
+  }
+  &>.el-menu{
+    @include sub-item(1, column);
+    @include scrollbar(4);
+  }
+  .sidebar-footer{
+    @include flex;
+    @include center;
+    @include text-ellipsis;
+
+    color: #999;
+    font-size: 14px;
+    width: 100%;
+    height: 48px;
+    box-shadow: 0 -2px 6px #f1f1f1;
+    background: #fcfcfc;
+
+    .el-switch {
+      margin-left: 24px;
+    }
+  }
+
+  &.el-aside-collapse{
+    width: $sidebarMinWidth !important;
+  }
+  &.el-aside-dark {
+    background: $asideDarkTheme;
+
+    .app-logo {
+      color: #b9b9b9;
+    }
+    .sidebar-footer {
+      color: #b9b9b9;
+      box-shadow: 0 -4px 8px #545454;
+      background: #373737;
+    }
+  }
+}
