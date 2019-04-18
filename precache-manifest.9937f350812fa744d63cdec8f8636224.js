@@ -8,12 +8,12 @@ self.__precacheManifest = [
     "url": "/static/css/account.ec287b93.css"
   },
   {
-    "revision": "b91ba7e932ec2ad02115",
+    "revision": "4196d1d66087e6c681a0",
     "url": "/static/css/app.b2d0f64f.css"
   },
   {
-    "revision": "b91ba7e932ec2ad02115",
-    "url": "/static/js/app.c9e6661a.js"
+    "revision": "4196d1d66087e6c681a0",
+    "url": "/static/js/app.05bfdb05.js"
   },
   {
     "revision": "b9d475bf15b0b1843b9d",
@@ -84,11 +84,11 @@ self.__precacheManifest = [
     "url": "/static/img/logo.82b9c7a5.png"
   },
   {
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "revision": "735ab4f94fbcd57074377afca324c813",
     "url": "/robots.txt"
   },
   {
-    "revision": "14df8e87eb6fc05818adf621ed3541b6",
+    "revision": "0900cb6fd50c9b0efe11e98e147cde3d",
     "url": "/index.html"
   },
   {

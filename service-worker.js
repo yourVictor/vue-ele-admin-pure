@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.d884ba9361a9a7411ac7c2de9f62caa9.js"
+  "/precache-manifest.9937f350812fa744d63cdec8f8636224.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "vue-ele-admin-pure"});
