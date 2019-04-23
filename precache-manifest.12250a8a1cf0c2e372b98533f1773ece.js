@@ -4,28 +4,28 @@ self.__precacheManifest = [
     "url": "/vue-ele-admin-pure/static/js/error.0889d84e.js"
   },
   {
-    "revision": "ee43a3e6631156793f85",
+    "revision": "8a013f3c0363f09aafb3",
     "url": "/vue-ele-admin-pure/static/css/account.ec287b93.css"
   },
   {
-    "revision": "68abc5fe94f4340e0abc",
-    "url": "/vue-ele-admin-pure/static/css/app.93191629.css"
+    "revision": "5f248f8b61fef1e4c104",
+    "url": "/vue-ele-admin-pure/static/css/app.091d6b87.css"
   },
   {
-    "revision": "68abc5fe94f4340e0abc",
-    "url": "/vue-ele-admin-pure/static/js/app.0b857196.js"
+    "revision": "5f248f8b61fef1e4c104",
+    "url": "/vue-ele-admin-pure/static/js/app.1826d7b0.js"
   },
   {
-    "revision": "bad9e7234cf73722084a",
-    "url": "/vue-ele-admin-pure/static/js/chunk-55017773.d0c4c4d1.js"
+    "revision": "88d35506fc8359d0fc55",
+    "url": "/vue-ele-admin-pure/static/js/chunk-55017773.ece6cd9e.js"
   },
   {
-    "revision": "95066ffc9ef4d7a14086",
-    "url": "/vue-ele-admin-pure/static/css/chunk-vendors.b615b622.css"
+    "revision": "4f42cd882f29d6ecbb10",
+    "url": "/vue-ele-admin-pure/static/css/chunk-vendors.ee13ea9a.css"
   },
   {
-    "revision": "95066ffc9ef4d7a14086",
-    "url": "/vue-ele-admin-pure/static/js/chunk-vendors.3120e56a.js"
+    "revision": "4f42cd882f29d6ecbb10",
+    "url": "/vue-ele-admin-pure/static/js/chunk-vendors.333df2fb.js"
   },
   {
     "revision": "f660a9980b3739edca1a",
@@ -36,20 +36,20 @@ self.__precacheManifest = [
     "url": "/vue-ele-admin-pure/static/js/components.999da828.js"
   },
   {
-    "revision": "e98257f9a30d2b4fc7d1",
-    "url": "/vue-ele-admin-pure/static/css/dashboard.95173b96.css"
+    "revision": "c692e4ab457752dee785",
+    "url": "/vue-ele-admin-pure/static/css/dashboard.3bc1ef06.css"
   },
   {
-    "revision": "e98257f9a30d2b4fc7d1",
-    "url": "/vue-ele-admin-pure/static/js/dashboard.37588dca.js"
+    "revision": "c692e4ab457752dee785",
+    "url": "/vue-ele-admin-pure/static/js/dashboard.6705ec8b.js"
   },
   {
     "revision": "14db926cfbf7ba607f50",
     "url": "/vue-ele-admin-pure/static/css/error.42f2114d.css"
   },
   {
-    "revision": "ee43a3e6631156793f85",
-    "url": "/vue-ele-admin-pure/static/js/account.e316038e.js"
+    "revision": "8a013f3c0363f09aafb3",
+    "url": "/vue-ele-admin-pure/static/js/account.6a48882b.js"
   },
   {
     "revision": "ce77353484b4ccdfb4fa",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/vue-ele-admin-pure/robots.txt"
   },
   {
-    "revision": "e1d6bcd18c880469c2aea67de306d712",
+    "revision": "e66e5e512c02981e429afa671290e1ca",
     "url": "/vue-ele-admin-pure/index.html"
   },
   {
