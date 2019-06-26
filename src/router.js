@@ -1,25 +1,49 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-
+import Container from '@/container/index'
+import member from '@/routers/member'
+import components from '@/routers/components'
+import setting from '@/routers/setting'
 Vue.use(Router)
 
+export const constantRouterMap = [
+  {
+    path: '/404',
+    name: 'error',
+    meta: { title: '404', hidden: true },
+    component: () => import(/* webpackChunkName: "error" */ '@/views/error/404.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    meta: { title: '登录', hidden: true },
+    component: () => import(/* webpackChunkName: "account" */ '@/views/account/login/index.vue')
+  },
+  {
+    path: '',
+    meta: { title: 'routes.dashboard', icon: 'el-icon-extend-dashboard' },
+    redirect: '/dashboard',
+    component: Container,
+    children: [{
+      path: 'dashboard',
+      name: 'dashboard',
+      meta: { title: 'routes.dashboard', showParent: false },
+      component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue')
+    }]
+  }
+]
+export const asyncRouterMap = [
+  member,
+  components,
+  setting,
+  {
+    path: '*',
+    redirect: '/404',
+    meta: { hidden: true }
+  }
+]
 export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-  ]
+  mode: process.env.VUE_APP_ROUTER_MODE,
+  base: process.env.VUE_APP_ROUTER_BASE,
+  routes: constantRouterMap
 })
