@@ -1,7 +1,7 @@
 <template>
-    <div class="member-list-container">
-        <search-form :queryConfig="queryConfig" :listQuery="listQuery" :search="search"></search-form>
-    </div>
+  <div class="member-list-container">
+    <search-form :queryConfig="queryConfig" :listQuery="listQuery" :search="search"></search-form>
+  </div>
 </template>
 <script>
 import SearchForm from '@/components/searchForm/v1/index'
