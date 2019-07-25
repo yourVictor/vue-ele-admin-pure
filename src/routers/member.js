@@ -10,7 +10,7 @@ export default {
     {
       path: 'list',
       name: 'memberList',
-      meta: { title: 'routes.memberList', showParent: true },
+      meta: { title: 'routes.memberList', showParent: true, keepAlive: true },
       component: () => import(/* webpackChunkName: "member" */ '@/views/member/list/index.vue')
     },
     {

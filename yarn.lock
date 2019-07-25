@@ -3466,10 +3466,10 @@ elegant-spinner@^1.0.1:
   resolved "https://registry.npm.taobao.org/elegant-spinner/download/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
 
-element-ui@^2.10.0:
-  version "2.10.0"
-  resolved "https://registry.npm.taobao.org/element-ui/download/element-ui-2.10.0.tgz#e6129f6b6d6ffe0dbad125a4a8d17d447a5f639c"
-  integrity sha1-5hKfa21v/g260SWkqNF9RHpfY5w=
+element-ui@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.npm.taobao.org/element-ui/download/element-ui-2.11.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felement-ui%2Fdownload%2Felement-ui-2.11.0.tgz#4e8bb208389785b6f2215c5ffdf6431ddc017c9d"
+  integrity sha1-TouyCDiXhbbyIVxf/fZDHdwBfJ0=
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"

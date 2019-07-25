@@ -1,19 +1,24 @@
 <template>
-    <div class="main-container">
-        <el-container>
-            <sidebar :sidebar="sidebar" :routes="routes" :toggleTheme="toggleSideBarDarkTheme"/>
-            <el-container direction="vertical">
-                <header-bar :account="account" :sidebar="sidebar" :routes="routes" :toggleCollapse="toggleSideBarCollapse"/>
-                <tag-view v-if="!sidebar.hidden"></tag-view>
-                <el-main id="main-content" :class="{'no-padding': sidebar.hidden&&!$route.path.match('/dashboard')}">
-                    <transition :enter-to-class="$route.params.backFlag||$route.query.backFlag?'animated bounceInLeft':'animated bounceInRight'" :leave-active-class="$route.params.backFlag||$route.query.backFlag?'animated bounceOutRight':'animated bounceOutLeft'" :duration="{ enter: 800, leave: 300 }">
-                        <router-view ref="child-ref" :style="'min-height:'+(bodyHeight-86-(sidebar.hidden?-36:40))+'px;box-sizing: border-box'"/>
-                    </transition>
-                    <to-top/>
-                </el-main>
-            </el-container>
-        </el-container>
-    </div>
+  <div class="main-container">
+    <el-container>
+      <sidebar :sidebar="sidebar" :routes="routes" :toggleTheme="toggleSideBarDarkTheme"/>
+      <el-container direction="vertical">
+        <header-bar :account="account" :sidebar="sidebar" :routes="routes" :toggleCollapse="toggleSideBarCollapse"/>
+        <tag-view v-if="!sidebar.hidden"></tag-view>
+        <el-main id="main-content" :class="{'no-padding': sidebar.hidden&&!$route.path.match('/dashboard')}">
+          <transition :enter-to-class="$route.params.backFlag||$route.query.backFlag?'animated bounceInLeft':'animated bounceInRight'" :leave-active-class="$route.params.backFlag||$route.query.backFlag?'animated bounceOutRight':'animated bounceOutLeft'" :duration="{ enter: 800, leave: 300 }">
+            <keep-alive>
+              <router-view v-if="$route.meta.keepAlive" ref="child-ref" :style="'min-height:'+(bodyHeight-86-(sidebar.hidden?-36:40))+'px;box-sizing: border-box'"/>
+            </keep-alive>
+          </transition>
+          <transition v-if="!$route.meta.keepAlive" :enter-to-class="$route.params.backFlag||$route.query.backFlag?'animated bounceInLeft':'animated bounceInRight'" :leave-active-class="$route.params.backFlag||$route.query.backFlag?'animated bounceOutRight':'animated bounceOutLeft'" :duration="{ enter: 800, leave: 300 }">
+            <router-view  ref="child-ref" :style="'min-height:'+(bodyHeight-86-(sidebar.hidden?-36:40))+'px;box-sizing: border-box'"/>
+          </transition>
+          <to-top/>
+        </el-main>
+      </el-container>
+    </el-container>
+  </div>
 </template>
 <script>
 import sidebar from './component/sidebar/index'
