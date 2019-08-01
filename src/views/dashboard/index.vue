@@ -107,9 +107,9 @@ export default {
   },
   methods: {
     async fetchData () {
-      let response = await dashboard()
-      if (response.success) {
-        this.cardData = response.data
+      let res = await dashboard()
+      if (res.success) {
+        this.cardData = res.data
       }
       // 绘制图表
       chartTrends.setOption({
