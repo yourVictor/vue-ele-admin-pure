@@ -49,7 +49,8 @@ service.interceptors.response.use(response => {
     type: 'error',
     duration: 3 * 1000
   })
-  return Promise.reject(error)
+  return { success: false, e: error }
+  // return Promise.reject(error)
 })
 
 export default service

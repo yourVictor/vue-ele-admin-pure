@@ -1,10 +1,9 @@
 import request from '@/utils/request'
-import { requestErrorControl } from '@/utils/index'
 
 export function dashboard (data) {
   return request({
-    url: '/dashboard555',
+    url: '/dashboard',
     method: 'post',
     data
-  }).catch(requestErrorControl)
+  })
 }
