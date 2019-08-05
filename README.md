@@ -53,18 +53,30 @@ $: git clone https://github.com/yourVictor/vue-ele-admin-pure.git my-project
 ```
 $: cd my-project
 $: yarn install    |  npm install
-$: yarn run serve  |  npm run serve
+$: yarn run serve  |  npm run serve  // 开放环境预览
+```
+# 配置
+### 1、打包环境配置
+不同环境使用不同的配置文件【env: 基础配置文件，env.test: 测试环境配置文件，env.uat: uat环境配置文件，env.prod: env.production: 按日期保存每次打包生产环境的记录】
+
+```
+NODE_ENV = 'development'          // 编译环境：可取development、production
+baseUrl = '/'                     // 项目资源访问路径
+VUE_APP_ROUTER_BASE = '/'         // 路由访问路径
+VUE_APP_ROUTER_MODE = 'history'   // 路由模式：可取hash、history[服务端需配置支持]
+VUE_APP_API = ''                  // 项目接口BASE_API
+VUE_APP_MOCK = true               // 项目是否使用MOCK模拟数据
 ```
 # 打包发布
-### 1、测试环境(可发布目录dist/test)
+### 1、测试环境(发布目录dist/test)
 ```
 $: yarn run build:test  |  npm run build:test
 ```
-### 2、UAT环境(可发布目录dist/uat)
+### 2、UAT环境(发布目录dist/uat)
 ```
 $: yarn run build:uat   |  npm run build:uat
 ```
-### 3、正式环境(可发布目录dist/prod)
+### 3、正式环境(发布目录dist/prod)
 ```
 $: yarn run build:prod  |  npm run build:prod
 ```
