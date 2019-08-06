@@ -70,7 +70,9 @@ export default {
     },
     toggleSideBarCollapse () {
       this.$store.dispatch('ToggleSideBarCollapse')
-      this.$refs['child-ref'].resizeCallBack(true)
+      if (this.$refs['child-ref'] && this.$refs['child-ref'].resizeCallBack) {
+        this.$refs['child-ref'].resizeCallBack(true)
+      }
     },
     toggleSideBarDarkTheme () {
       this.$store.dispatch('ToggleSideBarDarkTheme')
