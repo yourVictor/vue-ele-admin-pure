@@ -5,7 +5,7 @@
   @include flex-item;
   @include flex;
   @include a-center;
-  /*@include scrollbar(4);*/
+  @include scrollbar(3);
   flex-wrap: nowrap;
   height: 36px;
   padding: 0 12px;
