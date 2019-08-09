@@ -9,54 +9,65 @@
   display: flex;
   flex-direction: $direction;
 }
-@mixin flex-item{
-  flex-shrink:0;
+
+@mixin flex-item {
+  flex-shrink: 0;
 }
-@mixin sub-item($size: 1, $direction: row){
+
+@mixin sub-item($size: 1, $direction: row) {
   flex-grow: $size;
-  @if $direction == 'row' {
+
+  @if $direction=='row' {
     width: 1%
   }
+
   @else {
     width: 100%;
     height: 1%;
   }
 }
 
-@mixin a-center{
+@mixin a-center {
   align-items: center;
 }
-@mixin j-center{
+
+@mixin j-center {
   justify-content: center;
 }
-@mixin center{
+
+@mixin center {
   align-items: center;
   justify-content: center;
   align-content: center;
 }
 
-@mixin a-end{
+@mixin a-end {
   align-items: flex-end;
 }
-@mixin j-end{
+
+@mixin j-end {
   justify-content: flex-end;
 }
 
-@mixin flex-container($direction: row){
+@mixin flex-container($direction: row) {
   @include flex($direction);
 
-  &>.flex-item{
+  &>.flex-item {
     @include flex-item;
   }
-  &>.sub-item{
+
+  &>.sub-item {
     @include sub-item($direction: $direction);
-    &2{
+
+    &2 {
       @include sub-item($size: 2, $direction: $direction);
     }
-    &3{
+
+    &3 {
       @include sub-item($size: 3, $direction: $direction);
     }
-    &4{
+
+    &4 {
       @include sub-item($size: 4, $direction: $direction);
     }
   }
@@ -66,7 +77,7 @@
 // @name: textEllipsis
 // @access: public
 //
-@mixin text-ellipsis{
+@mixin text-ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -76,9 +87,10 @@
 // @name: userSelect
 // @access: public
 //
-@mixin user-select{
+@mixin user-select {
   user-select: text;
-  *{
+
+  * {
     user-select: text;
   }
 }
@@ -90,19 +102,22 @@
 // @param[$size]: number
 // @param[$color]: color value
 //
-@mixin scrollbar($size: $scrollBarSize, $color: $scrollBarColor){
+@mixin scrollbar($size: $scrollBarSize, $color: $scrollBarColor) {
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 
-  &::-webkit-scrollbar{
+  &::-webkit-scrollbar {
     width: $size+px;
     height: $size+px;
     background-color: transparent;
   }
-  &:hover{
-    &::-webkit-scrollbar{
+
+  &:hover {
+    &::-webkit-scrollbar {
       width: $size+px;
       height: $size+px;
     }
+
     &::-webkit-scrollbar-thumb {
       border-radius: $size/2+px;
       background-color: $color;
@@ -115,8 +130,8 @@
 // @access: public
 // @param[$time]: time value
 //
-@mixin transition($time: 0.25s){
-  transition: all $time cubic-bezier(0.42,0,0.58,1);
+@mixin transition($time: 0.25s) {
+  transition: all $time cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 //
@@ -125,7 +140,7 @@
 // @param[$opacity]: 0-1
 // @param[$zIndex]: number
 //
-@mixin mask($opacity: 0.5,$zIndex: 999){
+@mixin mask($opacity: 0.5, $zIndex: 999) {
   opacity: $opacity;
   background: #000;
 

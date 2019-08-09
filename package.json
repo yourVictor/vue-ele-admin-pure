@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "author": "Mole <731913218@qq.com>",
+  "homepage": "https://github.com/yourVictor/vue-ele-admin-pure",
   "scripts": {
     "serve": "npm run lint && vue-cli-service serve",
     "build": "vue-cli-service build",
