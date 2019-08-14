@@ -7,12 +7,9 @@
         <tag-view v-if="!sidebar.hidden"></tag-view>
         <el-main id="main-content" :class="{'no-padding': sidebar.hidden&&!$route.path.match('/dashboard')}">
           <transition :enter-to-class="$route.params.backFlag||$route.query.backFlag?'animated bounceInLeft':'animated bounceInRight'" :leave-active-class="$route.params.backFlag||$route.query.backFlag?'animated bounceOutRight':'animated bounceOutLeft'" :duration="{ enter: 800, leave: 300 }">
-            <keep-alive>
-              <router-view v-if="$route.meta.keepAlive" ref="child-ref" :style="'min-height:'+(bodyHeight-86-(sidebar.hidden?-36:40))+'px;box-sizing: border-box'"/>
+            <keep-alive :include="keepAliveRoute.join(',')">
+              <router-view ref="child-ref" :style="'min-height:'+(bodyHeight-86-(sidebar.hidden?-36:40))+'px;box-sizing: border-box'"/>
             </keep-alive>
-          </transition>
-          <transition v-if="!$route.meta.keepAlive" :enter-to-class="$route.params.backFlag||$route.query.backFlag?'animated bounceInLeft':'animated bounceInRight'" :leave-active-class="$route.params.backFlag||$route.query.backFlag?'animated bounceOutRight':'animated bounceOutLeft'" :duration="{ enter: 800, leave: 300 }">
-            <router-view  ref="child-ref" :style="'min-height:'+(bodyHeight-86-(sidebar.hidden?-36:40))+'px;box-sizing: border-box'"/>
           </transition>
           <to-top/>
         </el-main>
@@ -36,7 +33,34 @@ export default {
   },
   data () {
     return {
+      keepAliveRoute: ['placeholder'],
       bodyHeight: document.body.offsetHeight || document.documentElement.clientHeight
+    }
+  },
+  computed: {
+    account () {
+      return this.$store.getters.account
+    },
+    sidebar () {
+      return this.$store.getters.sidebar
+    },
+    routes () {
+      return this.$store.getters.routes
+    }
+  },
+  watch: {
+    $route (to, from) {
+      if (to.meta.keepAlive && !this.keepAliveRoute.includes(to.name)) {
+        this.keepAliveRoute.push(to.name)
+      }
+
+      if (to.query.backFlag === undefined && this.keepAliveRoute.includes(to.name)) {
+        this.keepAliveRoute = this.keepAliveRoute.filter(i => i !== to.name)
+
+        setTimeout(() => {
+          this.keepAliveRoute.push(to.name)
+        }, 100)
+      }
     }
   },
   created () {
@@ -51,17 +75,6 @@ export default {
           this.$refs['child-ref'].resizeCallBack()
         }
       }, 100)
-    }
-  },
-  computed: {
-    account () {
-      return this.$store.getters.account
-    },
-    sidebar () {
-      return this.$store.getters.sidebar
-    },
-    routes () {
-      return this.$store.getters.routes
     }
   },
   methods: {
