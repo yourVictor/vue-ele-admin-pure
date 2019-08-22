@@ -28,6 +28,23 @@ export function formatDate (date, pattern = 'YYYY-MM-DD HH:mm:ss') {
   return '-'
 }
 
+export function formatMoney (money, digit = 2) {
+  var moneyArray = (parseFloat(money) || 0).toFixed(digit).split('.')
+  var num = moneyArray[0]
+  var result = ''
+  while (num.length > 3) {
+    result = ',' + num.slice(-3) + result
+    num = num.slice(0, num.length - 3)
+  }
+  if (num) {
+    result = num + result
+  }
+  if (moneyArray.length > 1) {
+    result += '.' + moneyArray[1]
+  }
+  return result
+}
+
 export default {
   appName: pkg.name,
   hasSideMinWidth: 768,

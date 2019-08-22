@@ -1,10 +1,23 @@
 <template>
   <div class="base-components-container">
     <search-form :queryConfig="queryConfig" :listQuery="listQuery" :search="search"></search-form>
+
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+      :modal-append-to-body="false"
+      width="60%">
+      <tinymce-editor v-if="dialogVisible" v-model="content"/>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 <script>
 import SearchForm from '@/components/searchForm/v1/index'
+import tinymceEditor from '@/components/tinymceEditor/v1/index'
 import './index.scss'
 export default {
   name: 'baseComponents',
@@ -18,7 +31,8 @@ export default {
     }
   },
   components: {
-    SearchForm
+    SearchForm,
+    tinymceEditor
   },
   data () {
     let tempTypeData = [
@@ -35,7 +49,14 @@ export default {
         name: '',
         type: '',
         regDate: []
-      }
+      },
+      dialogVisible: false,
+      content: ''
+    }
+  },
+  methods: {
+    search () {
+      this.dialogVisible = true
     }
   }
 }

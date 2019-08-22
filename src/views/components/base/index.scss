@@ -1,7 +1,14 @@
-@import
-"../../../styles/_variables",
+@import "../../../styles/_variables",
 "../../../styles/_mixins";
 
-.base-components-container{
+.base-components-container {
   padding: 24px;
+
+  .v-modal {
+    z-index: 9 !important;
+  }
+
+  .el-dialog__wrapper {
+    z-index: 99 !important;
+  }
 }

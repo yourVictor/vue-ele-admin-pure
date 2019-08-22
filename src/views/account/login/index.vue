@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="login-container" :style="`background: url(${pageBgImg}) no-repeat;background-size: cover;`">
     <el-card class="animated zoomInRight login-form">
       <div class="form-title">{{appName}}</div>
       <el-form :model="form" :rules="formRules" ref="form" label-position="left">
@@ -35,6 +35,7 @@ export default {
   },
   data () {
     return {
+      pageBgImg: `${process.env.BASE_URL}img/bg/page_login.jpg`,
       appName: config.appName,
       passwordType: 'password',
       loading: false,
