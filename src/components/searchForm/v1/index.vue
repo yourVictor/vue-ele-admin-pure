@@ -56,6 +56,7 @@ export default {
     resetForm (formName) {
       this.$nextTick(() => {
         this.$refs[formName].resetFields()
+        this.search()
       })
     }
   }
