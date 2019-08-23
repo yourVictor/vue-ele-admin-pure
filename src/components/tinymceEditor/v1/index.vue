@@ -9,6 +9,7 @@ import tinymce from 'tinymce/tinymce'
 import Editor from '@tinymce/tinymce-vue'
 import 'tinymce/themes/silver'
 // 更多插件参考：https://www.tiny.cloud/docs/plugins/
+import 'tinymce/plugins/link'// 插入链接插件
 import 'tinymce/plugins/image'// 插入上传图片插件
 import 'tinymce/plugins/media'// 插入视频插件
 import 'tinymce/plugins/table'// 插入表格插件
@@ -28,7 +29,7 @@ export default {
     },
     plugins: {
       type: [String, Array],
-      default: 'lists image media table wordcount'
+      default: 'link lists image media table wordcount'
     },
     toolbar: {
       type: [String, Array],
@@ -53,6 +54,7 @@ export default {
         // 如需ajax上传可参考https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_handler
         images_upload_handler: (blobInfo, success, failure) => {
           const img = 'data:image/jpeg;base64,' + blobInfo.base64()
+          // const file = blobInfo.blob()
           success(img)
         }
       },
