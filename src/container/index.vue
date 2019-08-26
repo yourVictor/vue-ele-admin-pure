@@ -6,8 +6,8 @@
         <header-bar :account="account" :sidebar="sidebar" :routes="routes" :toggleCollapse="toggleSideBarCollapse"/>
         <tag-view v-if="!sidebar.hidden"></tag-view>
         <el-main id="main-content" :class="{'no-padding': sidebar.hidden&&!$route.path.match('/dashboard')}">
-          <transition :enter-to-class="$route.params.backFlag||$route.query.backFlag?'animated bounceInLeft':'animated bounceInRight'" :leave-active-class="$route.params.backFlag||$route.query.backFlag?'animated bounceOutRight':'animated bounceOutLeft'" :duration="{ enter: 800, leave: 300 }">
-            <keep-alive :include="keepAliveRoute.join(',')">
+          <transition :enter-to-class="$route.params.backFlag||$route.query.backFlag?'animated bounceInLeft':'animated bounceInRight'" :leave-active-class="$route.params.backFlag||$route.query.backFlag?'animated bounceOutRight':'animated bounceOutLeft'" :duration="{ enter: 600, leave: 200 }">
+            <keep-alive v-show="show" :include="keepAliveRoute.join(',')">
               <router-view ref="child-ref" :style="'min-height:'+(bodyHeight-86-(sidebar.hidden?-36:40))+'px;box-sizing: border-box'"/>
             </keep-alive>
           </transition>
@@ -33,6 +33,7 @@ export default {
   },
   data () {
     return {
+      show: true,
       keepAliveRoute: ['placeholder'],
       bodyHeight: document.body.offsetHeight || document.documentElement.clientHeight
     }
@@ -50,6 +51,7 @@ export default {
   },
   watch: {
     $route (to, from) {
+      this.show = !this.show
       if (to.meta.keepAlive && !this.keepAliveRoute.includes(to.name)) {
         this.keepAliveRoute.push(to.name)
       }

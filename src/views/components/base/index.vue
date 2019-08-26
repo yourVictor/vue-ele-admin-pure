@@ -7,7 +7,7 @@
       :visible.sync="dialogVisible"
       :modal-append-to-body="false"
       width="60%">
-      <tinymce-editor v-if="dialogVisible" v-model="content"/>
+      <tinymce-editor v-model="content"/>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>

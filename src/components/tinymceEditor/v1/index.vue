@@ -64,6 +64,9 @@ export default {
   mounted () {
     tinymce.init({})
   },
+  deactivated () {
+    tinymce.remove()
+  },
   watch: {
     value (newValue) {
       this.myValue = newValue

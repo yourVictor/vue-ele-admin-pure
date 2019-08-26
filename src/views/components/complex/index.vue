@@ -1,8 +1,10 @@
 <template>
     <div class="complex-components-container">
         <tinymce-editor v-model="content"/>
-
         <div>{{content}}</div>
+
+        <tinymce-editor v-model="newContent"/>
+        <div>{{newContent}}</div>
     </div>
 </template>
 <script>
@@ -24,7 +26,8 @@ export default {
   },
   data () {
     return {
-      content: ''
+      content: '',
+      newContent: ''
     }
   }
 }
