@@ -2,6 +2,15 @@ import axios from 'axios'
 import { Message } from 'element-ui'
 import store from '@/store'
 
+const reg = new RegExp('[\\u4E00-\\u9FFF]+', 'g')
+const errorControl = (message) => {
+  Message({
+    message: reg.test(message) ? message : '服务器异常，请稍后再试',
+    type: 'error',
+    duration: 3 * 1000
+  })
+}
+
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.VUE_APP_API, // api的baseURL
@@ -28,29 +37,31 @@ service.interceptors.response.use(response => {
   if (headers['content-type'] === 'application/vnd.ms-excel;charset=UTF-8') {
     return resData
   }
-  if (resData.status !== 200 && resData.status !== '200') {
-    const reg = new RegExp('[\\u4E00-\\u9FFF]+', 'g')
-    Message({
-      message: resData.message && reg.test(resData.message) ? resData.message : '服务器异常，请稍后再试',
-      // message: resData.message ? resData.message : '服务器异常，请稍后再试',
-      type: 'error',
-      duration: 3 * 1000
-    })
-    // return Promise.reject(new Error('error'))
-    return { success: false }
+  if (response.config.responseType === 'blob') {
+    var b = new Blob([resData])
+    var r = new FileReader()
+    r.readAsText(b, 'utf-8')
+    r.onload = function () {
+      let result = JSON.parse(r.result)
+      errorControl(result.message)
+    }
+    return {
+      success: false
+    }
+  } else if (resData.status !== 200 && resData.status !== '200') {
+    errorControl(resData.message)
   }
+
   return {
-    success: true,
+    success: resData.status === 200,
     ...resData
   }
 }, error => {
-  Message({
-    message: error.response && error.response.data.message ? error.response.data.message : '服务器异常，请稍后再试',
-    type: 'error',
-    duration: 3 * 1000
-  })
-  return { success: false, e: error }
-  // return Promise.reject(error)
+  errorControl(error.response && error.response.data ? error.response.data.message : '服务器异常，请稍后再试')
+  return {
+    success: false,
+    e: error
+  }
 })
 
 export default service
