@@ -48,6 +48,6 @@ export function formatMoney (money, digit = 2) {
 export default {
   appName: pkg.name,
   hasSideMinWidth: 768,
-  timeToLogout: 10, // 单位：分钟
+  timeToLogout: 30, // 单位：分钟
   headerFixed: true
 }

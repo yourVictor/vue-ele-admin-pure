@@ -48,7 +48,7 @@ service.interceptors.response.use(response => {
     return {
       success: false
     }
-  } else if (resData.status !== 200 && resData.status !== '200') {
+  } else if (resData.status !== 200) {
     errorControl(resData.message)
   }
 
