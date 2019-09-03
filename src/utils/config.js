@@ -28,7 +28,10 @@ export function formatDate (date, pattern = 'YYYY-MM-DD HH:mm:ss') {
   return '-'
 }
 
-export function formatMoney (money, digit = 2) {
+export function formatMoney (money, dot = true, digit = 2) {
+  if (!dot) {
+    return (parseFloat(money) || 0).toFixed(digit)
+  }
   var moneyArray = (parseFloat(money) || 0).toFixed(digit).split('.')
   var num = moneyArray[0]
   var result = ''
