@@ -67,6 +67,128 @@ VUE_APP_ROUTER_MODE = 'history'   // 路由模式：可取hash、history[服务�
 VUE_APP_API = ''                  // 项目接口BASE_API
 VUE_APP_MOCK = true               // 项目是否使用MOCK模拟数据
 ```
+### 2、全局样式配置【位置：src/styles/__variables.scss】
+```
+// global css 网站主色调 RGB值--------------------------------------------
+$red: 10;
+$green: 160;
+$blue: 100;
+//body css set-------------------------------------------------
+$normalColor: #494949;       // 默认字体颜色
+$subColor: #8f8f8f;          // 副标题字体颜色
+$inputHolderColor: #d9d9d9;  // input placeHolder字体颜色
+$borderColor: #e4e4e4;       // 边框颜色
+$subBorderColor: #efefef;
+$shadowColor: rgba(210, 210, 210, 0.54); // 阴影颜色
+$activeColor: rgb($red,$green,$blue);    // 网站主色
+$bodyBgColor: #fff;                      // 网页背景颜色
+$scrollBarColor: rgba(0, 0, 0, 0.4);     // 滚动条颜色
+$asideTheme: #fff;                       // 侧边菜单亮色
+$asideDarkTheme: #4b4b4b;                // 侧边菜单暗色
+
+$normalFontSize: 12px;        // 默认字体大小
+$normalIconFontSize: 24px;    // 默认字体图标大小
+$normalLineHeight: 1;
+$scrollBarSize: 8;            // 滚动条宽度
+$sidebarMinWidth: 46px;       // 侧边栏收起的宽度
+$sidebarMaxWidth: 200px;      // 侧边栏展开的宽度
+$headerBarHeight: 50px;       // headerBar高度
+```
+### 3、字体图标、多色字体图标配置【位置：src/styles/_fontIcon.scss】
+```
+1、进阿里图标库挑选需要的图标【注册>新建项目>挑选图标>生成css文件>拷贝到_fontIcon.scss】
+   https://www.iconfont.cn/
+   备注：上面基本上有你想要的所有图标
+
+2、使用
+   2.1：单色字体图标（***代表不同的图标名称）
+       <i class="el-icon-extend-***"></i>
+
+   2.2：多色字体图标（***代表不同的图标名称）
+       <svg class="icon" aria-hidden="true">
+        <use xlink:href="#el-icon-extend-***"></use>
+       </svg>
+```
+
+### 3、路由相关配置【位置：src/routers/*.js】
+#### 3.1、应用场景1：权限控制（控制级别：菜单。且需要后端配合）
+配置：菜单路由的meta字段增加【roles: ['admin', ...]】。用户在登录以后，会根据后端返回用户的角色来匹配对应的页面路由
+```
+export default {
+  path: '/settings',
+  name: 'settings',
+  redirect: '/settings/base',
+  meta: { title: 'routes.settings', icon: 'el-icon-extend-dashboard', roles: ['admin'] },
+  component: Container,
+  children: [
+    {
+      path: 'base',
+      name: 'baseSettings',
+      meta: { title: 'routes.baseSettings', showParent: true },
+      component: () => import(/* webpackChunkName: "setting" */ '@/views/settings/base/index.vue')
+    }
+  ]
+}
+```
+  
+#### 3.2、应用场景2：在一个具有搜索或者分页的列表页浏览，点击某一条记录跳转到详情页，浏览或操作完返回，发现搜索条件全部没了，且分页又跳到第1页
+配置：在对应列表页面路由的meta增加【keepAlive: true】即可，如下所示
+```
+{
+  path: 'list',
+  name: 'memberList',
+  meta: { title: 'routes.memberList', showParent: true, keepAlive: true },
+  component: () => import(/* webpackChunkName: "member" */ '@/views/member/list/index.vue')
+}
+
+//备注：如需重置，在详情页，点击菜单回到列表会重置搜索条件和分页
+```
+
+#### 3.3、应用场景3：一个列表页的入口在菜单，对应的详情页的入口在列表页。访问详情页，这时候刷新页面，发现菜单并不会定位到其对应的列表页菜单
+配置：在详情页面路由的meta增加【index: XXX】即可，XXX为对应列表页的路由完整path
+```
+{
+  path: '/member',
+  name: 'member',
+  redirect: '/member/list',
+  meta: { title: 'routes.member', icon: 'el-icon-extend-dashboard' },
+  component: Container,
+  children: [
+    {
+      path: 'list',
+      name: 'memberList',
+      meta: { title: 'routes.memberList', showParent: true, keepAlive: true },
+      component: () => import(/* webpackChunkName: "member" */ '@/views/member/list/index.vue')
+    },
+    {
+      path: ':id/detail',
+      name: 'memberDetail',
+      meta: { title: 'routes.memberDetail', hidden: true, index: '/member/list' },
+      component: () => import(/* webpackChunkName: "member" */ '@/views/member/detail/index.vue')
+    }
+  ]
+}
+```
+#### 3.4、应用场景4：现有的路由配置，如果一个菜单只有一个子菜单，则默认不会显示父级菜单。
+配置：在对应页面路由meta增加【showParent: true】即可显示父级菜单
+```
+{
+  path: '/settings',
+  name: 'settings',
+  redirect: '/settings/base',
+  meta: { title: 'routes.settings', icon: 'el-icon-extend-dashboard', roles: ['admin'] },
+  component: Container,
+  children: [
+    {
+      path: 'base',
+      name: 'baseSettings',
+      meta: { title: 'routes.baseSettings', showParent: true },
+      component: () => import(/* webpackChunkName: "setting" */ '@/views/settings/base/index.vue')
+    }
+  ]
+}
+```
+
 # 打包发布
 ### 1、测试环境(发布目录dist/test)
 ```
