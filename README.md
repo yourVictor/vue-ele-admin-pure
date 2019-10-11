@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/vue-2.6.10-orange.svg" alt="vue">
   </a>
   <a href="https://github.com/ElemeFE/element">
-    <img src="https://img.shields.io/badge/element--ui-2.10.0-orange.svg" alt="element">
+    <img src="https://img.shields.io/badge/element--ui-2.12.0-orange.svg" alt="element">
   </a>
   <a href="https://github.com/vuejs/vuex">
     <img src="https://img.shields.io/badge/vuex-3.0.1-orange.svg" alt="vuex">

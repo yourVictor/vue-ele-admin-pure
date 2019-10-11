@@ -7,7 +7,7 @@
         </el-form-item>
         <el-form-item v-else-if="item.type==='select'" :label="`${item.label}：`" :prop="item.prop">
           <el-select v-model="listQuery[item.prop]" placeholder="请选择" size="medium" filterable clearable>
-              <el-option v-for="optionItem in item.data" :key="optionItem.value" :label="optionItem.label" :value="optionItem.value"></el-option>
+            <el-option v-for="optionItem in item.data" :key="optionItem.value" :label="optionItem.label" :value="optionItem.value"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item v-else-if="item.type==='daterange'" :label="`${item.label}：`" :prop="item.prop">
