@@ -205,5 +205,5 @@ $: yarn run build:prod  |  npm run build:prod
 # 微信赞赏
 <img src="./public/img/donate/wechat_donate.jpg" width="260" alt="微信赞赏">
 
-# 自定义配置
+# 其它自定义配置
 See [Configuration Reference](https://cli.vuejs.org/config/).
