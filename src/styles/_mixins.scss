@@ -84,6 +84,19 @@
 }
 
 //
+// @name: textLineEllipsis
+// @access: public
+//
+@mixin text-line-ellipsis($line: 2, $lineHeight: 30) {
+  height: ($lineHeight*$line)+'px';
+  line-height: $lineHeight+'px';
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+}
+
+//
 // @name: userSelect
 // @access: public
 //
