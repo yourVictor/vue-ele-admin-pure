@@ -87,13 +87,16 @@
 // @name: textLineEllipsis
 // @access: public
 //
-@mixin text-line-ellipsis($line: 2, $lineHeight: 30) {
-  height: ($lineHeight*$line)+'px';
-  line-height: $lineHeight+'px';
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: $line;
+@mixin text-line-ellipsis($line: 2, $lineHeight: 1.12) {
+  line-height: $lineHeight;
+  white-space: normal;
+  text-overflow: -o-ellipsis-lastline;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  line-clamp: $line;
+  -webkit-box-orient: vertical;
 }
 
 //
