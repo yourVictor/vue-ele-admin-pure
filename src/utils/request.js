@@ -43,13 +43,13 @@ service.interceptors.response.use(response => {
     r.readAsText(b, 'utf-8')
     r.onload = function () {
       let result = JSON.parse(r.result)
-      errorControl(result.message)
+      errorControl(result.message || result.msg)
     }
     return {
       success: false
     }
   } else if (resData.status !== 200) {
-    errorControl(resData.message)
+    errorControl(resData.message || resData.msg)
   }
 
   return {
