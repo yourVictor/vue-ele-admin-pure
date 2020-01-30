@@ -32,7 +32,7 @@
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",
     "register-service-worker": "^1.6.2",
-    "tinymce": "^5.0.14",
+    "tinymce": "^5.1.4",
     "vue": "^2.6.10",
     "vue-content-loader": "^0.2.2",
     "vue-i18n": "^8.11.2",
