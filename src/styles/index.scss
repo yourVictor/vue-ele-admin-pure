@@ -1,0 +1,9 @@
+@import
+"_variables",
+"_reset",
+"_fontIcon",
+"_layout";
+
+#nprogress .bar {
+  background: $color-active !important;
+}

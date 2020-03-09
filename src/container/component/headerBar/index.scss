@@ -1,0 +1,54 @@
+@import
+"../../../styles/_variables",
+"../../../styles/_mixins";
+.el-popover-header-bar{
+  padding: 0 !important;
+}
+.header-wrapper{
+  @include flex-container;
+  @include a-center;
+  height: $height-header-bar !important;
+  padding: 0 !important;
+  background: #fff;
+  // box-shadow: 0 2px 6px 0 rgba(222, 222, 222, 0.4);
+  border-bottom: 1px solid $color-border-sub;
+  position: relative;
+  z-index: 9;
+
+  .account-item{
+    margin-right: 24px;
+  }
+
+  .btn {
+    @include flex;
+    @include center;
+    // color: #494949;
+    width: $height-header-bar;
+    height: $height-header-bar;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-active;
+      background-color: rgba($red, $green, $blue, 0.15);
+    }
+
+    &.language-btn{
+      padding: 12px;
+      box-sizing: border-box
+    }
+    &.account-btn{
+      width: auto;
+      max-width: 200px;
+      padding: 0 12px;
+
+      & > div {
+        @include text-ellipsis;
+        margin: 0 4px;
+      }
+    }
+  }
+
+  &.header-wrapper-margin{
+    margin-left: 1px;
+  }
+}
