@@ -7,8 +7,11 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:test": "vue-cli-service build --mode test",
+    "build:test.projectA": "vue-cli-service build --mode test.projectA",
     "build:uat": "vue-cli-service build --mode uat",
+    "build:uat.projectA": "vue-cli-service build --mode uat.projectA",
     "build:prod": "vue-cli-service build --mode prod",
+    "build:prod.projectA": "vue-cli-service build --mode prod.projectA",
     "build:ghPages": "vue-cli-service build --mode ghPages",
     "server:test": "node localServer.js --mode test",
     "server:uat": "node localServer.js --mode uat",
