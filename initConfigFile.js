@@ -1,7 +1,7 @@
 var fs = require('fs')
 var path = require('path')
 
-var project = 'test'
+var project = 'AdminDefault'
 try {
   project = process.argv.splice(3)[0]
 } catch (e) {
@@ -25,7 +25,7 @@ var fileList = [
     destPath: path.join(__dirname, '.env.prod')
   }
 ]
-console.log(`project: ${project}`)
+console.log(`--- start project: ${project} ---`)
 for (let i = 0; i < fileList.length; i++) {
   fs.copyFileSync(fileList[i].srcPath, fileList[i].destPath)
 }
