@@ -8,6 +8,7 @@ var portList = {
   prod: 8100
 }
 var mode = 'test'
+var project = 'AdminDefault'
 
 try {
   mode = process.argv.splice(3)[0]
@@ -16,12 +17,12 @@ try {
 }
 app.use(compression())
 app.use(history())
-app.use(express.static(`./dist/${mode}`))
+app.use(express.static(`./dist/${project}/${mode}`))
 app.listen(portList[mode], function (err) {
   if (err) {
     console.log(err)
     return
   }
 
-  console.log(`Start server【Local ${mode}】 at: http://localhost:${portList[mode]}\n`)
+  console.log(`Start server【Local ${project} ${mode}】 at: http://localhost:${portList[mode]}\n`)
 })
