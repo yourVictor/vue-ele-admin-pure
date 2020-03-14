@@ -5,6 +5,8 @@
   "author": "Mole <731913218@qq.com>",
   "homepage": "https://github.com/yourVictor/vue-ele-admin-pure",
   "scripts": {
+    "start:AdminDefault": "node initConfigFile.js --project AdminDefault && npm run serve",
+    "build:AdminDefault": "node initConfigFile.js --project AdminDefault && npm run build:test && npm run build:uat && npm run build:prod",
     "start:AdminBiXuan": "node initConfigFile.js --project AdminBiXuan && npm run serve",
     "build:AdminBiXuan": "node initConfigFile.js --project AdminBiXuan && npm run build:test && npm run build:uat && npm run build:prod",
     "start:AdminQQS": "node initConfigFile.js --project AdminQQS && npm run serve",
