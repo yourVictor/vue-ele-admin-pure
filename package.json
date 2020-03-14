@@ -7,7 +7,8 @@
   "scripts": {
     "start:AdminBiXuan": "node initConfigFile.js --project AdminBiXuan && npm run serve",
     "build:AdminBiXuan": "node initConfigFile.js --project AdminBiXuan && npm run build:test && npm run build:uat && npm run build:prod",
-    "serve": "vue-cli-service serve",
+    "start:AdminQQS": "node initConfigFile.js --project AdminQQS && npm run serve",
+    "build:AdminQQS": "node initConfigFile.js --project AdminQQS && npm run build:test && npm run build:uat && npm run build:prod","serve": "vue-cli-service serve",
     "build:test": "vue-cli-service build --mode test",
     "build:uat": "vue-cli-service build --mode uat",
     "build:prod": "vue-cli-service build --mode prod",
