@@ -12,7 +12,7 @@ const cdn = {
 }
 module.exports = {
   publicPath: process.env.baseUrl,
-  outputDir: process.env.outputDir,
+  outputDir: `dist/${process.env.VUE_APP_PROJECT_NAME}/${process.env.VUE_APP_BUILD_TYPE}`,
   assetsDir: 'static',
   productionSourceMap: false,
   css: {
