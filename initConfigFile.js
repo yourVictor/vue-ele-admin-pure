@@ -9,23 +9,27 @@ try {
 }
 var fileList = [
   {
-    srcPath: path.join(__dirname, `src/projects/${project}/.env`),
+    srcPath: path.join(__dirname, `src/_projects/${project}/.env`),
     destPath: path.join(__dirname, '.env')
   },
   {
-    srcPath: path.join(__dirname, `src/projects/${project}/.env.test`),
+    srcPath: path.join(__dirname, `src/_projects/${project}/.env.test`),
     destPath: path.join(__dirname, '.env.test')
   },
   {
-    srcPath: path.join(__dirname, `src/projects/${project}/.env.uat`),
+    srcPath: path.join(__dirname, `src/_projects/${project}/.env.uat`),
     destPath: path.join(__dirname, '.env.uat')
   },
   {
-    srcPath: path.join(__dirname, `src/projects/${project}/.env.prod`),
+    srcPath: path.join(__dirname, `src/_projects/${project}/.env.prod`),
     destPath: path.join(__dirname, '.env.prod')
   }
 ]
 console.log(`--- start project: ${project} ---`)
-for (let i = 0; i < fileList.length; i++) {
-  fs.copyFileSync(fileList[i].srcPath, fileList[i].destPath)
+try {
+  for (let i = 0; i < fileList.length; i++) {
+    fs.copyFileSync(fileList[i].srcPath, fileList[i].destPath)
+  }
+} catch (e) {
+  console.log('initConfigFile error: ', e)
 }
