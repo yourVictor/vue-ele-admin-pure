@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+//global css---------------------------------------------------
+$red: 10;
+$green: 160;
+$blue: 100;
+
+
+//body css set-------------------------------------------------
+$color-normal: #494949;           // 默认字体颜色
+$color-sub: #8f8f8f;              // 副标题字体颜色
+$color-input-holder: #d9d9d9;     // input placeHolder字体颜色
+$color-border: #e4e4e4;           // 边框颜色
+$color-border-sub: #efefef;
+$color-shadow: rgba(210, 210, 210, 0.54); // 阴影颜色
+$color-active: rgb($red,$green,$blue);      // 网站主色
+$color-body-bg: #fff;                     // 网页背景颜色
+$color-scroll-bar: rgba(0, 0, 0, 0.4);    // 滚动条颜色
+$theme-aside: #fff;                       // 侧边菜单亮色
+$theme-aside-dark: #4b4b4b;               // 侧边菜单暗色
+
+$size-normal: 12px;             // 默认字体大小
+$size-icon: 24px;               // 默认字体图标大小
+$size-line-height: 1;
+$size-scroll-bar: 8;            // 滚动条宽度
+$width-sidebar-min: 46px;       // 侧边栏收起的宽度
+$width-sidebar-max: 200px;      // 侧边栏展开的宽度
+$height-header-bar: 50px;       // headerBar高度

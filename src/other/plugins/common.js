@@ -113,18 +113,6 @@ common.install = function (Vue) {
   Vue.prototype.indexMethod = function (index, listQuery) {
     return ((listQuery.pageIndex || 1) - 1) * (listQuery.pageSize || 20) + index + 1
   }
-  // 获取页面listQuery
-  Vue.prototype.getLocalQuery = function (initQuery, pageName) {
-    const query = sessionStorage.getItem(`page_${pageName}_list_query`)
-    if (query) {
-      return Object.assign({}, initQuery, JSON.parse(query))
-    }
-    return initQuery
-  }
-  // 缓存页面listQuery
-  Vue.prototype.setLocalQuery = function (listQuery, pageName) {
-    sessionStorage.setItem(`page_${pageName}_list_query`, JSON.stringify(listQuery))
-  }
 }
 
 Vue.use(common)

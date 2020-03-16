@@ -5,11 +5,10 @@
 </template>
 
 <script>
-import config from '@/utils/config'
 export default {
   name: 'App',
   metaInfo: {
-    title: config.appName,
+    title: process.env.VUE_APP_PROJECT_NAME,
     titleTemplate: '%s',
     meta: [
       { vmid: 'keyword', name: 'keyword', content: 'default-keyword' },

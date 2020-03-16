@@ -23,6 +23,14 @@ var fileList = [
   {
     srcPath: path.join(__dirname, `src/_projects/${project}/.env.prod`),
     destPath: path.join(__dirname, '.env.prod')
+  },
+  {
+    srcPath: path.join(__dirname, `src/_projects/${project}/plugins/langs/zh.js`),
+    destPath: path.join(__dirname, 'src/__common/plugins/i18n/zh.js')
+  },
+  {
+    srcPath: path.join(__dirname, `src/_projects/${project}/plugins/langs/en.js`),
+    destPath: path.join(__dirname, 'src/__common/plugins/i18n/en.js')
   }
 ]
 console.log(`--- start project: ${project} ---`)

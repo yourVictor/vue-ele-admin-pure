@@ -2,6 +2,10 @@
 node_modules
 /dist
 
+# local langs
+/src/__common/plugins/i18n/zh.js
+/src/__common/plugins/i18n/en.js
+
 # local env files
 /.env
 /.env.*

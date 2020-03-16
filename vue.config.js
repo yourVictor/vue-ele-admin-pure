@@ -11,6 +11,9 @@ const cdn = {
   ]
 }
 module.exports = {
+  pages: {
+    index: `src/_projects/${process.env.VUE_APP_PROJECT_NAME}/main.js`
+  },
   publicPath: process.env.baseUrl,
   outputDir: `dist/${process.env.VUE_APP_PROJECT_NAME}/${process.env.VUE_APP_BUILD_TYPE}`,
   assetsDir: 'static',
