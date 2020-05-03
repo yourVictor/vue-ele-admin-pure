@@ -1,0 +1,18 @@
+.block-copy-rights{
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+  position: fixed;
+
+  &:hover{
+    opacity: 0.5;
+  }
+  &:active{
+    opacity: 0.6;
+  }
+}
