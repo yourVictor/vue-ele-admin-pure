@@ -67,13 +67,28 @@ common.install = function (Vue) {
     ],
     // 密码规则
     passwordRule: [
-      { required: true, message: '不能为空', trigger: 'blur' },
-      { pattern: regexp.password, message: '格式错误：数字、字母和下划线（至少包含其中两种，非数字开头，8-12位）', trigger: 'blur' }
+      { pattern: regexp.password, message: '格式错误：数字、字母和下划线（至少包含其中两种，非数字开头，5-12位）', trigger: 'blur' }
     ],
     // 价格规则
     priceRule: [
       { required: true, message: '不能为空', trigger: 'change' },
       { pattern: regexp.money, message: '格式错误：须大于0小于1000000且最多保留两位小数', trigger: 'change' }
+    ],
+    // URL规则
+    urlRule: [
+      { pattern: regexp.url, message: '必须为正确格式的URL', trigger: 'change' }
+    ],
+    // 邮箱规则
+    emailRule: [
+      { pattern: regexp.email, message: '必须为正确格式的邮箱', trigger: 'change' }
+    ],
+    // 手机号规则
+    telRule: [
+      { pattern: regexp.tel, message: '必须为正确格式的手机号', trigger: 'change' }
+    ],
+    // 座机规则
+    phoneRule: [
+      { pattern: regexp.phone, message: '必须为正确格式的座机号码', trigger: 'change' }
     ],
     // 折扣规则
     discountRule: [],
@@ -112,18 +127,6 @@ common.install = function (Vue) {
   // 列表索引
   Vue.prototype.indexMethod = function (index, listQuery) {
     return ((listQuery.pageIndex || 1) - 1) * (listQuery.pageSize || 20) + index + 1
-  }
-  // 获取页面listQuery
-  Vue.prototype.getLocalQuery = function (initQuery, pageName) {
-    const query = sessionStorage.getItem(`page_${pageName}_list_query`)
-    if (query) {
-      return Object.assign({}, initQuery, JSON.parse(query))
-    }
-    return initQuery
-  }
-  // 缓存页面listQuery
-  Vue.prototype.setLocalQuery = function (listQuery, pageName) {
-    sessionStorage.setItem(`page_${pageName}_list_query`, JSON.stringify(listQuery))
   }
 }
 
