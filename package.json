@@ -25,6 +25,7 @@
     "element-ui": "^2.13.0",
     "js-cookie": "^2.2.1",
     "nprogress": "^0.2.0",
+    "qiniu-js": "^2.5.5",
     "register-service-worker": "^1.6.2",
     "tinymce": "^5.2.0",
     "vue": "^2.6.11",
