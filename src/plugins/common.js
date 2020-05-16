@@ -32,7 +32,7 @@ common.install = function (Vue) {
       // 逻辑...
     },
     updated: debounce(function () {
-      if (this.$route.name === 'login') {
+      if (this.$route && this.$route.name === 'login') {
         return
       }
       // 长时间未操作自动退出登录
