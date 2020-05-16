@@ -83,6 +83,9 @@ export default {
       if (command === 'logout') {
         this.$store.dispatch('Logout')
         this.$router.replace({ name: 'login' })
+        setTimeout(() => {
+          location.reload()
+        }, 0)
       }
     }
   }
