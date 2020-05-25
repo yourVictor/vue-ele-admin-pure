@@ -6,7 +6,8 @@
       element-loading-text="上传中"
       action="https://jsonplaceholder.typicode.com/posts/"
       :show-file-list="false"
-      :http-request="upload">
+      :http-request="upload"
+      :class="{ active: !!imageUrl }">
       <template v-if="imageUrl">
         <el-image style="width: 100px; height: 100px" :src="imageUrl+'?imageView2/2/w/200/h/200'" fit="contain"></el-image>
         <div class="el-upload__tip" slot="tip">
@@ -24,7 +25,8 @@
         :key="index"
         action="https://jsonplaceholder.typicode.com/posts/"
         :show-file-list="false"
-        :http-request="(data) => {upload(data, index)}">
+        :http-request="(data) => {upload(data, index)}"
+        class="active">
         <el-image style="width: 100px; height: 100px" :src="item+'?imageView2/2/w/200/h/200'" fit="contain"></el-image>
         <div class="el-upload__tip" slot="tip">
           <el-button type="text" @click="previewImage(item)">预览</el-button>
