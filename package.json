@@ -27,7 +27,7 @@
     "nprogress": "^0.2.0",
     "qiniu-js": "^2.5.5",
     "register-service-worker": "^1.6.2",
-    "tinymce": "^5.2.0",
+    "tinymce": "^5.4.0",
     "vue": "^2.6.11",
     "vue-content-loader": "^0.2.3",
     "vue-i18n": "^8.15.4",
