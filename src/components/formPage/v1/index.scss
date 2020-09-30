@@ -1,0 +1,13 @@
+.form-page-container{
+  .el-pagination__jump{
+    margin-right: 40px;
+  }
+  
+  .el-input,
+  .el-select,
+  .el-textarea,
+  .el-cascader{
+    width: 100%;
+    max-width: 500px;
+  }
+}

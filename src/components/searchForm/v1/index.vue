@@ -1,7 +1,7 @@
 <template>
   <el-form ref="searchForm" class="search-form" :model="listQuery" label-position="right" :label-width="`${labelWidth}px`">
     <el-row :gutter="30">
-      <el-col v-for="(item, index) in queryConfig" :sm="24" :md="12" :lg="8" :xl="6" :key="index">
+      <el-col v-for="(item, index) in queryConfig" :sm="spanConfig.sm" :md="spanConfig.md" :lg="spanConfig.lg" :xl="spanConfig.xl" :key="index">
         <el-form-item v-if="item.type === 'input'" :label="`${item.label}：`" :prop="item.prop">
           <el-input @keyup.enter.native="search" v-model="listQuery[item.prop]" :placeholder="item.label" :maxlength="item.maxlength || 25" size="medium" clearable></el-input>
         </el-form-item>
@@ -24,6 +24,9 @@
           >
           </el-date-picker>
         </el-form-item>
+        <el-form-item v-else-if="item.type === 'datetime'" :label="`${item.label}：`" :prop="item.prop">
+          <el-date-picker v-model="listQuery[item.prop]" type="datetime" value-format="yyyy-MM-dd HH:mm:ss" :placeholder="item.label" size="medium"> </el-date-picker>
+        </el-form-item>
       </el-col>
     </el-row>
     <el-form-item label="" class="btn-item">
@@ -40,6 +43,12 @@ export default {
     labelWidth: {
       type: Number,
       default: 96
+    },
+    spanConfig: {
+      type: Object,
+      default() {
+        return { sm: 24, md: 12, lg: 8, xl: 6 }
+      }
     },
     listQuery: {
       type: Object,

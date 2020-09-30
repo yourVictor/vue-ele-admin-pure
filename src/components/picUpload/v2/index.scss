@@ -1,0 +1,50 @@
+.pic-upload-container {
+  display: inline-block;
+
+  &>div {
+    vertical-align: top;
+    height: 104px;
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    display: inline-block;
+
+    &.active{
+      height: 134px;
+    }
+  }
+
+  .el-upload {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    box-sizing: content-box;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    .upload-icon {
+      font-size: 28px;
+      color: #8c939d;
+      text-align: center;
+    }
+
+
+    &:hover {
+      color: #409EFF;
+      border-color: #409EFF;
+
+      .hover-div {
+        display: block;
+      }
+    }
+  }
+
+  .el-upload__tip {
+    text-align: center;
+    margin-top: -20px;
+  }
+
+}

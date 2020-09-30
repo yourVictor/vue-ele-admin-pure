@@ -1,0 +1,10 @@
+.list-page-container{
+  .el-dialog{
+    .el-input,
+    .el-select,
+    .el-textarea{
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+}
