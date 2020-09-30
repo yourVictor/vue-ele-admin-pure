@@ -7,9 +7,9 @@
  */
 import format from 'date-fns/format'
 const pkg = require('../../package')
-export function debounce (fn, interval, once) {
+export function debounce(fn, interval, once) {
   let timeout
-  return function () {
+  return function() {
     if (!timeout) {
       fn.apply(this, arguments)
     } else if (once) {
@@ -18,7 +18,7 @@ export function debounce (fn, interval, once) {
     }
 
     if (!timeout) {
-      timeout = setTimeout(function () {
+      timeout = setTimeout(function() {
         timeout = null
       }, interval)
     }
@@ -30,7 +30,7 @@ export function debounce (fn, interval, once) {
  * 参数：date[null、undefined、''、Date、时间戳]、pattern：格式[字符串，非必填]
  * 返回：格式化的时间字符串
  */
-export function formatDate (date, pattern = 'yyyy-MM-dd HH:mm:ss') {
+export function formatDate(date, pattern = 'yyyy-MM-dd HH:mm:ss') {
   if (date) {
     const originDate = typeof date === 'string' ? new Date(date) : date
     const str = format(originDate, pattern)
@@ -39,7 +39,7 @@ export function formatDate (date, pattern = 'yyyy-MM-dd HH:mm:ss') {
   return '-'
 }
 
-export function formatMoney (money, dot = true, digit = 2) {
+export function formatMoney(money, dot = true, digit = 2) {
   if (!dot) {
     return (parseFloat(money) || 0).toFixed(digit)
   }

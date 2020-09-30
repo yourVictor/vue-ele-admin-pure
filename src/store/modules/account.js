@@ -3,14 +3,14 @@ import { getToken, setToken, removeToken, getAccount, setAccount, removeAccount 
 import { login } from '@/apis/account/index'
 
 const account = getAccount()
-const hasPermission = function (roles, route) {
+const hasPermission = function(roles, route) {
   if (route.meta && route.meta.roles) {
     return roles.some(role => route.meta.roles.indexOf(role) >= 0)
   } else {
     return true
   }
 }
-const filterAsyncRouter = function (asyncRouterMap, roles) {
+const filterAsyncRouter = function(asyncRouterMap, roles) {
   const accessedRouters = asyncRouterMap.filter(route => {
     if (hasPermission(roles, route)) {
       if (route.children && route.children.length) {
@@ -42,7 +42,7 @@ export default {
     }
   },
   actions: {
-    Login ({ commit }, data) {
+    Login({ commit }, data) {
       return new Promise(async (resolve, reject) => {
         const response = await login(data)
         if (response.success) {
@@ -57,7 +57,7 @@ export default {
         }
       })
     },
-    GenerateRoutes ({ commit }, data) {
+    GenerateRoutes({ commit }, data) {
       return new Promise(resolve => {
         const { roles } = data
         let accessedRoutes
@@ -70,7 +70,7 @@ export default {
         resolve()
       })
     },
-    Logout ({ commit }) {
+    Logout({ commit }) {
       removeToken()
       commit('SET_TOKEN', '')
       removeAccount()

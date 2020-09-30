@@ -25,19 +25,21 @@ module.exports = {
     // 生产环境配置
     if (IS_PRODUCTION) {
       // 生产环境注入cdn
-      config.plugin('html')
-        .tap(args => {
-          args[0].cdn = cdn
-          return args
-        })
+      config.plugin('html').tap(args => {
+        args[0].cdn = cdn
+        return args
+      })
 
-      config.plugin('compress')
+      config
+        .plugin('compress')
         .use(CompressionWebpackPlugin)
-        .tap(() => [{
-          test: /\.js$|\.html$|\.css/,
-          threshold: 10240,
-          deleteOriginalAssets: false
-        }])
+        .tap(() => [
+          {
+            test: /\.js$|\.html$|\.css/,
+            threshold: 10240,
+            deleteOriginalAssets: false
+          }
+        ])
     }
   },
   configureWebpack: config => {

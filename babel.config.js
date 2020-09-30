@@ -5,7 +5,5 @@ if (process.env.VUE_APP_BUILD_TYPE === 'PROD') {
 }
 module.exports = {
   plugins: plugins,
-  presets: [
-    '@vue/cli-plugin-babel/preset'
-  ]
+  presets: ['@vue/cli-plugin-babel/preset']
 }

@@ -1,0 +1,20 @@
+{
+  "editor.fontSize": 18,
+  "editor.tabSize": 2,
+  "editor.wordWrapColumn": 200,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.autoSave": "onFocusChange",
+  "files.autoSaveDelay": 3000,
+  "git.autofetch": true,
+  "vetur.format.defaultFormatter.html":  "js-beautify-html",
+  "vetur.format.defaultFormatterOptions":  {
+    "js-beautify-html":  {
+      "wrap_line_length":  120,
+      "wrap_attributes":  "auto",
+      "end_with_newline":  false
+    }
+  }
+}

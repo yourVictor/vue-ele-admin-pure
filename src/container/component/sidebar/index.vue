@@ -1,15 +1,15 @@
 <template>
-    <el-aside v-if="!sidebar.hidden" :class="{'el-aside-dark': sidebar.isDarkTheme, 'el-aside-collapse': sidebar.isCollapse}">
-        <div :class="sidebar.isCollapse?'app-logo is-collapse':'app-logo'">
-            <img src="../../../assets/logo.png"/>
-            <div v-if="!sidebar.isCollapse">{{ appName }}</div>
-        </div>
-        <Menu :routes="routes" :sidebar="sidebar"></Menu>
-        <div class="sidebar-footer" v-if="!sidebar.isCollapse">
-            <div>{{$t('buttons.switchTheme')}}</div>
-            <el-switch v-model="sidebar.isDarkTheme" @change="toggleTheme"></el-switch>
-        </div>
-    </el-aside>
+  <el-aside v-if="!sidebar.hidden" :class="{ 'el-aside-dark': sidebar.isDarkTheme, 'el-aside-collapse': sidebar.isCollapse }">
+    <div :class="sidebar.isCollapse ? 'app-logo is-collapse' : 'app-logo'">
+      <img src="../../../assets/logo.png" />
+      <div v-if="!sidebar.isCollapse">{{ appName }}</div>
+    </div>
+    <Menu :routes="routes" :sidebar="sidebar"></Menu>
+    <div class="sidebar-footer" v-if="!sidebar.isCollapse">
+      <div>{{ $t('buttons.switchTheme') }}</div>
+      <el-switch v-model="sidebar.isDarkTheme" @change="toggleTheme"></el-switch>
+    </div>
+  </el-aside>
 </template>
 <script>
 import Menu from '../menu/index'
@@ -31,7 +31,7 @@ export default {
   components: {
     Menu
   },
-  data () {
+  data() {
     return {
       appName: config.appName
     }

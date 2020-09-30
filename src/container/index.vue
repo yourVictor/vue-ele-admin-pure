@@ -1,17 +1,21 @@
 <template>
   <div class="main-container">
     <el-container>
-      <sidebar :sidebar="sidebar" :routes="routes" :toggleTheme="toggleSideBarDarkTheme"/>
+      <sidebar :sidebar="sidebar" :routes="routes" :toggleTheme="toggleSideBarDarkTheme" />
       <el-container direction="vertical">
-        <header-bar :account="account" :sidebar="sidebar" :routes="routes" :toggleCollapse="toggleSideBarCollapse"/>
+        <header-bar :account="account" :sidebar="sidebar" :routes="routes" :toggleCollapse="toggleSideBarCollapse" />
         <tag-view v-if="!sidebar.hidden"></tag-view>
-        <el-main id="main-content" :class="{'no-padding': sidebar.hidden&&!$route.path.match('/dashboard')}">
-          <transition :enter-to-class="$route.params.backFlag||$route.query.backFlag?'animated bounceInLeft':'animated bounceInRight'" :leave-active-class="$route.params.backFlag||$route.query.backFlag?'animated bounceOutRight':'animated bounceOutLeft'" :duration="{ enter: 600, leave: 200 }">
+        <el-main id="main-content" :class="{ 'no-padding': sidebar.hidden && !$route.path.match('/dashboard') }">
+          <transition
+            :enter-to-class="$route.params.backFlag || $route.query.backFlag ? 'animated bounceInLeft' : 'animated bounceInRight'"
+            :leave-active-class="$route.params.backFlag || $route.query.backFlag ? 'animated bounceOutRight' : 'animated bounceOutLeft'"
+            :duration="{ enter: 600, leave: 200 }"
+          >
             <keep-alive v-show="show" :include="keepAliveRoute.join(',')">
-              <router-view ref="child-ref" :style="'min-height:'+(bodyHeight-86-(sidebar.hidden?-36:40))+'px;box-sizing: border-box'"/>
+              <router-view ref="child-ref" :style="'min-height:' + (bodyHeight - 86 - (sidebar.hidden ? -36 : 40)) + 'px;box-sizing: border-box'" />
             </keep-alive>
           </transition>
-          <to-top/>
+          <to-top />
         </el-main>
       </el-container>
     </el-container>
@@ -31,7 +35,7 @@ export default {
     tagView,
     toTop
   },
-  data () {
+  data() {
     return {
       show: true,
       keepAliveRoute: ['placeholder'],
@@ -39,18 +43,19 @@ export default {
     }
   },
   computed: {
-    account () {
+    account() {
       return this.$store.getters.account
     },
-    sidebar () {
+    sidebar() {
       return this.$store.getters.sidebar
     },
-    routes () {
+    routes() {
       return this.$store.getters.routes
     }
   },
   watch: {
-    $route (to, from) {
+    $route(to) {
+      // to,from
       this.show = !this.show
       if (to.meta.keepAlive && !this.keepAliveRoute.includes(to.name)) {
         this.keepAliveRoute.push(to.name)
@@ -65,7 +70,7 @@ export default {
       }
     }
   },
-  created () {
+  created() {
     let timer
     window.onresize = () => {
       clearTimeout(timer)
@@ -80,16 +85,16 @@ export default {
     }
   },
   methods: {
-    toggleSideBar () {
+    toggleSideBar() {
       this.$store.dispatch('ToggleSideBar')
     },
-    toggleSideBarCollapse () {
+    toggleSideBarCollapse() {
       this.$store.dispatch('ToggleSideBarCollapse')
       if (this.$refs['child-ref'] && this.$refs['child-ref'].resizeCallBack) {
         this.$refs['child-ref'].resizeCallBack(true)
       }
     },
-    toggleSideBarDarkTheme () {
+    toggleSideBarDarkTheme() {
       this.$store.dispatch('ToggleSideBarDarkTheme')
     }
   }

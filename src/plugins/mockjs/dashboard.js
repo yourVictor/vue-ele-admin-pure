@@ -94,6 +94,7 @@ const dashboardData = [
 
 Mock.mock('/dashboard', 'post', ({ body }) => {
   return {
+    body,
     status: 200,
     data: dashboardData,
     message: '',

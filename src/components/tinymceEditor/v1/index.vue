@@ -1,20 +1,21 @@
 <template>
   <div class="tinymce-editor">
-    <editor v-model="myValue" :init="init" :disabled="disabled">
-    </editor>
+    <editor v-model="myValue" :init="init" :disabled="disabled"> </editor>
   </div>
 </template>
 <script>
 import tinymce from 'tinymce/tinymce'
 import Editor from '@tinymce/tinymce-vue'
 import 'tinymce/themes/silver'
+import 'tinymce/icons/default/index'
 // 更多插件参考：https://www.tiny.cloud/docs/plugins/
-import 'tinymce/plugins/link'// 插入链接插件
-import 'tinymce/plugins/image'// 插入上传图片插件
-import 'tinymce/plugins/media'// 插入视频插件
-import 'tinymce/plugins/table'// 插入表格插件
-import 'tinymce/plugins/lists'// 列表插件
-import 'tinymce/plugins/wordcount'// 字数统计插件
+import 'tinymce/plugins/link' // 插入链接插件
+import 'tinymce/plugins/image' // 插入上传图片插件
+import 'tinymce/plugins/media' // 插入视频插件
+import 'tinymce/plugins/table' // 插入表格插件
+import 'tinymce/plugins/lists' // 列表插件
+import 'tinymce/plugins/wordcount' // 字数统计插件
+import 'tinymce/plugins/textcolor'
 import './index.scss'
 export default {
   name: 'tinymceEditor',
@@ -29,17 +30,19 @@ export default {
     },
     plugins: {
       type: [String, Array],
-      default: 'link lists image media table wordcount'
+      // default: ''
+      default: 'link lists image media table textcolor wordcount'
     },
     toolbar: {
       type: [String, Array],
+      // default: ''
       default: 'undo redo |  formatselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | lists image media table | removeformat'
     }
   },
   components: {
     Editor
   },
-  data () {
+  data() {
     return {
       init: {
         language_url: `${process.env.BASE_URL}static/tinymce/langs/zh_CN.js`,
@@ -56,22 +59,23 @@ export default {
           const img = 'data:image/jpeg;base64,' + blobInfo.base64()
           // const file = blobInfo.blob()
           success(img)
+          console.log(failure)
         }
       },
       myValue: this.value
     }
   },
-  mounted () {
+  mounted() {
     tinymce.init({})
   },
-  deactivated () {
+  deactivated() {
     tinymce.remove()
   },
   watch: {
-    value (newValue) {
+    value(newValue) {
       this.myValue = newValue
     },
-    myValue (newValue) {
+    myValue(newValue) {
       this.$emit('input', newValue)
     }
   }

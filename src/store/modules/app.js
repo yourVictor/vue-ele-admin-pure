@@ -8,7 +8,7 @@ export default {
     }
   },
   mutations: {
-    TOGGLE_SIDEBAR_COLLAPSE: (state) => {
+    TOGGLE_SIDEBAR_COLLAPSE: state => {
       if (state.sidebar.isCollapse) {
         localStorage.setItem('sidebarIsCollapse', '0')
       } else {
@@ -16,7 +16,7 @@ export default {
       }
       state.sidebar.isCollapse = !state.sidebar.isCollapse
     },
-    TOGGLE_SIDEBAR_DARK_THEME: (state) => {
+    TOGGLE_SIDEBAR_DARK_THEME: state => {
       if (state.sidebar.isDarkTheme) {
         localStorage.setItem('sidebarIsDarkTheme', '1')
       } else {
@@ -24,7 +24,7 @@ export default {
       }
     },
     TOGGLE_SIDEBAR: state => {
-      state.sidebar.hidden = (document.body.clientWidth < config.hasSideMinWidth)
+      state.sidebar.hidden = document.body.clientWidth < config.hasSideMinWidth
     }
   },
   actions: {

@@ -2,12 +2,8 @@
   <div class="base-components-container">
     <search-form :queryConfig="queryConfig" :listQuery="listQuery" :search="search"></search-form>
 
-    <el-dialog
-      title="提示"
-      :visible.sync="dialogVisible"
-      :modal-append-to-body="false"
-      width="60%">
-      <tinymce-editor v-model="content"/>
+    <el-dialog title="提示" :visible.sync="dialogVisible" :modal-append-to-body="false" width="60%">
+      <tinymce-editor v-model="content" />
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
@@ -21,7 +17,7 @@ import tinymceEditor from '@/components/tinymceEditor/v1/index'
 import './index.scss'
 export default {
   name: 'baseComponents',
-  metaInfo () {
+  metaInfo() {
     return {
       /* titleTemplate: '%s - 基本组件',
       meta: [
@@ -34,7 +30,7 @@ export default {
     SearchForm,
     tinymceEditor
   },
-  data () {
+  data() {
     const tempTypeData = [
       { label: '简单组件', value: 0 },
       { label: '高阶组件', value: 1 }
@@ -55,7 +51,7 @@ export default {
     }
   },
   methods: {
-    search () {
+    search() {
       this.dialogVisible = true
     }
   }

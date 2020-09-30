@@ -1,13 +1,13 @@
 <template>
-    <div class="base-setting-container">
-        base-setting-container
-    </div>
+  <div class="base-setting-container">
+    base-setting-container
+  </div>
 </template>
 <script>
 import './index.scss'
 export default {
   name: 'baseSetting',
-  metaInfo () {
+  metaInfo() {
     return {
       /* titleTemplate: '%s - 基本设置',
       meta: [

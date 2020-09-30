@@ -8,7 +8,7 @@ import SearchForm from '@/components/searchForm/v1/index'
 import './index.scss'
 export default {
   name: 'memberList',
-  metaInfo () {
+  metaInfo() {
     return {
       /* titleTemplate: '%s - 用户管理',
       meta: [
@@ -20,7 +20,7 @@ export default {
   components: {
     SearchForm
   },
-  data () {
+  data() {
     const tempSexData = [
       { label: '保密', value: 0 },
       { label: '男', value: 1 },
@@ -40,7 +40,7 @@ export default {
     }
   },
   methods: {
-    search () {
+    search() {
       //
     }
   }

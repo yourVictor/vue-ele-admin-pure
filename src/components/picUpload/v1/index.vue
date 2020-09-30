@@ -7,12 +7,13 @@
       action="https://jsonplaceholder.typicode.com/posts/"
       :show-file-list="false"
       :http-request="upload"
-      :class="{ active: !!imageUrl }">
+      :class="{ active: !!imageUrl }"
+    >
       <template v-if="imageUrl">
-        <el-image style="width: 100px; height: 100px" :src="imageUrl+'?imageView2/2/w/200/h/200'" fit="contain"></el-image>
+        <el-image style="width: 100px; height: 100px" :src="imageUrl + '?imageView2/2/w/200/h/200'" fit="contain"></el-image>
         <div class="el-upload__tip" slot="tip">
           <el-button type="text" @click="previewImage(imageUrl)">预览</el-button>
-          <el-button type="text" @click="imageUrl=''">清除</el-button>
+          <el-button type="text" @click="imageUrl = ''">清除</el-button>
         </div>
       </template>
       <i v-else class="el-icon-plus upload-icon"></i>
@@ -25,26 +26,25 @@
         :key="index"
         action="https://jsonplaceholder.typicode.com/posts/"
         :show-file-list="false"
-        :http-request="(data) => {upload(data, index)}"
-        class="active">
-        <el-image style="width: 100px; height: 100px" :src="item+'?imageView2/2/w/200/h/200'" fit="contain"></el-image>
+        :http-request="
+          data => {
+            upload(data, index)
+          }
+        "
+        class="active"
+      >
+        <el-image style="width: 100px; height: 100px" :src="item + '?imageView2/2/w/200/h/200'" fit="contain"></el-image>
         <div class="el-upload__tip" slot="tip">
           <el-button type="text" @click="previewImage(item)">预览</el-button>
           <el-button type="text" @click="imageUrl.splice(index, 1)">清除</el-button>
         </div>
       </el-upload>
-      <el-upload
-        v-if="imageUrl.length < limit"
-        v-loading="loading"
-        element-loading-text="上传中"
-        action="https://jsonplaceholder.typicode.com/posts/"
-        :show-file-list="false"
-        :http-request="upload">
+      <el-upload v-if="imageUrl.length < limit" v-loading="loading" element-loading-text="上传中" action="https://jsonplaceholder.typicode.com/posts/" :show-file-list="false" :http-request="upload">
         <i class="el-icon-plus upload-icon"></i>
       </el-upload>
     </template>
     <el-dialog :visible.sync="dialogVisible" append-to-body>
-      <img width="100%" :src="previewImageUrl" alt="">
+      <img width="100%" :src="previewImageUrl" alt="" />
     </el-dialog>
   </div>
 </template>
@@ -63,7 +63,7 @@ export default {
     limit: { default: 1 },
     callback: { type: Function }
   },
-  data () {
+  data() {
     return {
       uploadToken: '',
       host: '',
@@ -75,36 +75,33 @@ export default {
         region: qiniu.region.z0
       },
       loading: false,
-      listLoading: [
-        false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false, false, false, false, false
-      ],
+      listLoading: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
 
       imageUrl: this.value,
       previewImageUrl: '',
       dialogVisible: false
     }
   },
-  created () {
+  created() {
     this.fetchData()
   },
   watch: {
-    value (newValue) {
+    value(newValue) {
       this.imageUrl = newValue
     },
-    imageUrl (newValue) {
+    imageUrl(newValue) {
       this.$emit('input', newValue)
     }
   },
   methods: {
-    async fetchData () {
+    async fetchData() {
       const res = await getQiNiuToken()
       if (res.success) {
         this.uploadToken = res.data.uploadToken
         this.host = res.data.host
       }
     },
-    upload (data, index) {
+    upload(data, index) {
       if (index >= 0) {
         this.listLoading[index] = true
       } else {
@@ -113,10 +110,10 @@ export default {
       this.$forceUpdate()
       const observable = qiniu.upload(data.file, 'upf' + new Date().getTime(), this.uploadToken, this.putExtra, this.config)
       observable.subscribe({
-        next: (res) => {
+        next: () => {
           // console.log('next', res)
         },
-        error: (err) => {
+        error: err => {
           const reg = new RegExp('[\\u4E00-\\u9FFF]+', 'g')
           Message({
             message: err.message && reg.test(err.message) ? err.message : '服务器异常，请稍后再试',
@@ -129,7 +126,7 @@ export default {
             this.loading = false
           }
         },
-        complete: (res) => {
+        complete: res => {
           const src = this.host + '/' + res.key
           /* var src = qiniu.imageMogr2({
             thumbnail: '750x1000',
@@ -140,7 +137,7 @@ export default {
           const image = new Image()
           image.src = src + '?imageView2/2/w/200/h/200'
 
-          image.onload = function () {
+          image.onload = function() {
             if ($this.limit > 1) {
               if (index >= 0) {
                 $this.imageUrl[index] = src
@@ -161,7 +158,7 @@ export default {
             $this.$forceUpdate()
           }
 
-          image.onerror = function () {
+          image.onerror = function() {
             Message({
               message: '图片上传失败',
               type: 'error',
@@ -178,7 +175,7 @@ export default {
         }
       })
     },
-    previewImage (url) {
+    previewImage(url) {
       if (url || this.imageUrl) {
         this.previewImageUrl = url || this.imageUrl
         this.dialogVisible = true

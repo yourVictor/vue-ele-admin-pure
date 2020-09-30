@@ -9,21 +9,21 @@
 import './index.scss'
 export default {
   name: 'copy-rights',
-  data () {
+  data() {
     return {
       showDate: new Date('2020-05-20').getTime(),
       show: false
     }
   },
-  created () {
+  created() {
     this.initData()
   },
   methods: {
-    initData () {
+    initData() {
       const date = new Date().getTime()
       this.show = date > this.showDate
     },
-    toAuthorPage () {
+    toAuthorPage() {
       window.open('https://github.com/yourVictor/Mole')
     }
   }

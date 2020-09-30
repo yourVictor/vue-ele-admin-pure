@@ -1,13 +1,13 @@
 <template>
-    <div class="member-detail-container">
-        member-detail-container
-    </div>
+  <div class="member-detail-container">
+    member-detail-container
+  </div>
 </template>
 <script>
 import './index.scss'
 export default {
   name: 'memberDetail',
-  metaInfo () {
+  metaInfo() {
     return {
       /* titleTemplate: '%s - 用户管理',
       meta: [

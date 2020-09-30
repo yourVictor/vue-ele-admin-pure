@@ -12,10 +12,10 @@ export default {
     }
   },
   actions: {
-    addTagView ({ commit }, view) {
+    addTagView({ commit }, view) {
       commit('ADD_TAG_VIEW', view)
     },
-    delTagView ({ commit }, index) {
+    delTagView({ commit }, index) {
       commit('DEL_TAG_VIEW', index)
     }
   }

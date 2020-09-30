@@ -1,6 +1,47 @@
 import Vue from 'vue'
 import Meta from 'vue-meta'
-import { Loading, Container, Aside, Menu, Submenu, MenuItem, Header, Breadcrumb, BreadcrumbItem, Main, Tree, Table, TableColumn, Pagination, Card, Form, FormItem, Input, Button, Switch, DatePicker, Popover, Badge, Dropdown, DropdownMenu, DropdownItem, Tooltip, Tabs, TabPane, Row, Col, Dialog, Upload, Select, Option, Tag, Steps, Step, Message, MessageBox } from 'element-ui'
+import {
+  Loading,
+  Container,
+  Aside,
+  Menu,
+  Submenu,
+  MenuItem,
+  Header,
+  Breadcrumb,
+  BreadcrumbItem,
+  Main,
+  Tree,
+  Table,
+  TableColumn,
+  Pagination,
+  Card,
+  Form,
+  FormItem,
+  Input,
+  Button,
+  Switch,
+  DatePicker,
+  Popover,
+  Badge,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Tooltip,
+  Tabs,
+  TabPane,
+  Row,
+  Col,
+  Dialog,
+  Upload,
+  Select,
+  Option,
+  Tag,
+  Steps,
+  Step,
+  Message,
+  MessageBox
+} from 'element-ui'
 import '../../node_modules/element-ui/lib/theme-chalk/display.css'
 import '@/styles/element-reset.scss'
 
@@ -46,7 +87,7 @@ Vue.use(Step)
 
 // 以下组件需要单独挂载
 const element = {}
-element.install = function (Vue) {
+element.install = function(Vue) {
   // Vue.prototype.$ELEMENT = { size: 'medium', zIndex: 2000 } // 全局配置对象。该对象目前支持 size 与 zIndex 字段。size 用于改变组件的默认尺寸，zIndex 设置弹框的初始 z-index（默认值：2000）。
   Vue.prototype.$message = Message
   Vue.prototype.$alert = MessageBox.alert

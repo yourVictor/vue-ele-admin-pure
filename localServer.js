@@ -17,7 +17,7 @@ try {
 app.use(compression())
 app.use(history())
 app.use(express.static(`./dist/${mode}`))
-app.listen(portList[mode], function (err) {
+app.listen(portList[mode], function(err) {
   if (err) {
     console.log(err)
     return

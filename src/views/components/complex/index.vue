@@ -1,18 +1,18 @@
 <template>
-    <div class="complex-components-container">
-        <tinymce-editor v-model="content"/>
-        <div>{{content}}</div>
+  <div class="complex-components-container">
+    <tinymce-editor v-model="content" />
+    <div>{{ content }}</div>
 
-        <tinymce-editor v-model="newContent"/>
-        <div>{{newContent}}</div>
-    </div>
+    <tinymce-editor v-model="newContent" />
+    <div>{{ newContent }}</div>
+  </div>
 </template>
 <script>
 import tinymceEditor from '@/components/tinymceEditor/v1/index'
 import './index.scss'
 export default {
   name: 'complexComponents',
-  metaInfo () {
+  metaInfo() {
     return {
       /* titleTemplate: '%s - 复杂组件',
       meta: [
@@ -24,7 +24,7 @@ export default {
   components: {
     tinymceEditor
   },
-  data () {
+  data() {
     return {
       content: '',
       newContent: ''
