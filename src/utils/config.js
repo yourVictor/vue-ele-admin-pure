@@ -63,5 +63,6 @@ export default {
   appName: pkg.name,
   hasSideMinWidth: 768,
   timeToLogout: 30, // 单位：分钟
-  headerFixed: true
+  headerFixed: true,
+  loginWhiteList: ['/login'] // 免登录白名单
 }

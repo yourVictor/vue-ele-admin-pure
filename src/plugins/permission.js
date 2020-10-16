@@ -2,9 +2,9 @@ import router from '../router'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { getToken } from '@/utils/authentication' // getToken from cookie
+import $config from '@/utils/config'
 import store from '@/store'
 
-const whiteList = ['/login'] // whitelist
 let flag = true
 
 NProgress.configure({ showSpinner: false })
@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
         next()
       }
     }
-  } else if (whiteList.indexOf(to.path) !== -1) {
+  } else if ($config.loginWhiteList.indexOf(to.path) !== -1) {
     // 在免登录白名单，直接进入
     flag = true
     next()

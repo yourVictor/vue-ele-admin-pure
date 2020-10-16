@@ -39,7 +39,10 @@ service.interceptors.response.use(
     const resData = response.data
     const headers = response.headers
     if (headers['content-type'] === 'application/vnd.ms-excel;charset=UTF-8') {
-      return resData
+      return {
+        ...resData,
+        success: true
+      }
     }
     if (response.config.responseType === 'blob') {
       var b = new Blob([resData])
