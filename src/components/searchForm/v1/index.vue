@@ -1,9 +1,12 @@
 <template>
   <el-form ref="searchForm" class="search-form" :model="listQuery" label-position="right" :label-width="`${labelWidth}px`">
+    <!-- input holder start : 防止只有一个输入框时，按enter键刷新界面 -->
+    <el-input v-show="false" />
+    <!-- input holder end -->
     <el-row :gutter="30">
       <el-col v-for="(item, index) in queryConfig" :sm="spanConfig.sm" :md="spanConfig.md" :lg="spanConfig.lg" :xl="spanConfig.xl" :key="index">
         <el-form-item v-if="item.type === 'input'" :label="`${item.label}：`" :prop="item.prop">
-          <el-input @keyup.enter.native="search" v-model="listQuery[item.prop]" :placeholder="item.label" :maxlength="item.maxlength || 25" size="medium" clearable></el-input>
+          <el-input v-model="listQuery[item.prop]" :placeholder="item.label" :maxlength="item.maxlength || 25" size="medium" clearable @keyup.enter.native="search"></el-input>
         </el-form-item>
         <el-form-item v-else-if="item.type === 'select'" :label="`${item.label}：`" :prop="item.prop">
           <el-select v-model="listQuery[item.prop]" placeholder="请选择" size="medium" filterable clearable>
