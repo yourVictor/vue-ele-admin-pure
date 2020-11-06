@@ -58,19 +58,19 @@
         <i class="el-icon-plus upload-icon"></i>
       </el-upload>
     </template>
-    <el-dialog :visible.sync="dialogVisible" append-to-body>
-      <img width="100%" :src="previewImageUrl" alt="" />
-    </el-dialog>
+    <el-image-viewer v-if="showPreview" :on-close="closePreview" :initialIndex="initialIndex" :url-list="previewImageUrlList" />
   </div>
 </template>
 <script>
-// import * as imageConversion from 'image-conversion'
 import lrz from 'lrz'
 import { Message } from 'element-ui'
 import { uploadFile } from '@/apis/common/index'
 import './index.scss'
 export default {
   name: 'picUpload',
+  components: {
+    'el-image-viewer': () => import('element-ui/packages/image/src/image-viewer')
+  },
   props: {
     value: {
       type: [String, Array],
@@ -79,7 +79,8 @@ export default {
     limit: { default: 1 },
     multiple: { default: false },
     imgKey: { default: '' },
-    callback: { type: Function }
+    callback: { type: Function },
+    previewList: { type: Array, default: () => [] }
   },
   data() {
     return {
@@ -189,8 +190,10 @@ export default {
       ],
 
       imageUrl: this.value,
-      previewImageUrl: '',
-      dialogVisible: false
+
+      initialIndex: 0,
+      previewImageUrlList: [],
+      showPreview: false
     }
   },
   watch: {
@@ -298,14 +301,26 @@ export default {
       }
     },
     previewImage(item) {
-      let url = item
+      let url = item || this.imageUrl
       if (this.imgKey) {
-        url = item[this.imgKey]
+        url = item[this.imgKey] || this.imageUrl
       }
-      if (url || this.imageUrl) {
-        this.previewImageUrl = url || this.imageUrl
-        this.dialogVisible = true
+
+      if (url) {
+        this.previewImageUrlList = [...this.previewList]
+        if (!this.previewImageUrlList.length) {
+          this.previewImageUrlList = [url]
+        }
+
+        const index = this.previewImageUrlList.findIndex(i => i === url)
+        if (index > -1) {
+          this.initialIndex = index
+        }
+        this.showPreview = true
       }
+    },
+    closePreview() {
+      this.showPreview = false
     }
   }
 }
