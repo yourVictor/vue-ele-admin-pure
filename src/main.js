@@ -11,7 +11,8 @@ import '@/plugins/common'
 import '@/styles/js/_fontIcon' // 多色图标支持
 import '@/plugins/permission'
 import '@/styles/index.scss'
-import '@/plugins/mockjs/index.js' // (内部控制)开发环境使用 mockjs
+// 需调试导出功能（下载文件）时，需把MOCK关闭
+process.env.VUE_APP_MOCK === 'true' && import('@/plugins/mockjs/index.js') // 开发环境使用 mockjs
 
 Vue.config.productionTip = false
 
