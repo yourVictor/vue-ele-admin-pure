@@ -16,5 +16,13 @@
       "wrap_attributes":  "auto",
       "end_with_newline":  false
     }
-  }
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "html",
+    "vue",
+    "typescript",
+    "typescriptreact"
+  ]
 }
