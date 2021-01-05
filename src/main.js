@@ -3,6 +3,9 @@ import 'animate.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import listPage from '@/components/listPage/v1/index.vue'
+import formPage from '@/components/formPage/v1/index.vue'
+
 import i18n from '@/plugins/i18n/index'
 import '@/plugins/registerServiceWorker'
 import '@/plugins/element.js'
@@ -15,6 +18,8 @@ import '@/styles/index.scss'
 process.env.VUE_APP_MOCK === 'true' && import('@/plugins/mockjs/index.js') // 开发环境使用 mockjs
 
 Vue.config.productionTip = false
+Vue.component('listPage', listPage)
+Vue.component('formPage', formPage)
 
 new Vue({
   router,

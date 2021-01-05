@@ -1,7 +1,6 @@
-@import
-"../../../styles/_variables",
-"../../../styles/_mixins";
-
 .base-setting-container{
+  @include flex;
+  @include center;
+
   padding: 24px;
 }

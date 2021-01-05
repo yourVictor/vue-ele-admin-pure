@@ -16,7 +16,16 @@ module.exports = {
   assetsDir: 'static',
   productionSourceMap: false,
   css: {
-    sourceMap: IS_PRODUCTION
+    sourceMap: IS_PRODUCTION,
+    loaderOptions: {
+      // scss预设器配置项
+      scss: {
+        prependData: `
+          @import "./src/styles/_variables.scss";
+          @import "./src/styles/_mixins.scss";
+        `
+      }
+    }
   },
   pwa: {
     name: 'VUE ELE ADMIN PURE'

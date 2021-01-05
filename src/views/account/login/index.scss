@@ -1,6 +1,3 @@
-@import
-"../../../styles/_variables",
-"../../../styles/_mixins";
 .login-container{
   @include flex;
   @include center;
