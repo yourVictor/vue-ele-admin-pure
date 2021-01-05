@@ -7,8 +7,8 @@
         <tag-view v-if="!sidebar.hidden"></tag-view>
         <el-main id="main-content" :class="{ 'no-padding': sidebar.hidden && !$route.path.match('/dashboard') }">
           <transition
-            :enter-to-class="$route.params.backFlag || $route.query.backFlag ? 'animated bounceInLeft' : 'animated bounceInRight'"
-            :leave-active-class="$route.params.backFlag || $route.query.backFlag ? 'animated bounceOutRight' : 'animated bounceOutLeft'"
+            :enter-to-class="$route.params.backFlag || $route.query.backFlag ? 'animated fadeIn' : 'animated fadeIn'"
+            :leave-active-class="$route.params.backFlag || $route.query.backFlag ? 'animated fadeOut' : 'animated fadeOut'"
             :duration="{ enter: 600, leave: 200 }"
           >
             <keep-alive v-show="show" :include="keepAliveRoute.join(',')">
