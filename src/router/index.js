@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Container from '@/container/index'
-import member from '@/router/member'
-import components from '@/router/components'
-import setting from '@/router/setting'
+import systemManage from '@/router/systemManage'
+import systemSetting from '@/router/systemSetting'
 
 // -- 在升级了Vue-Router版本到到3.1.0及以上之后，页面在跳转路由控制台会报Uncaught (in promise)的问题
 const originalPush = Router.prototype.push
@@ -43,9 +42,8 @@ export const constantRouterMap = [
   }
 ]
 export const asyncRouterMap = [
-  member,
-  components,
-  setting,
+  systemManage,
+  systemSetting,
   {
     path: '*',
     redirect: '/404',

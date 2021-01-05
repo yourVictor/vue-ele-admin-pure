@@ -1,14 +1,13 @@
 export default {
   routes: {
     dashboard: 'Dashboard',
-    components: 'Components',
-    member: 'Member manage',
-    memberList: 'Member List',
-    memberDetail: 'Member Detail',
-    baseComponents: 'Base Components',
-    complexComponents: 'Complex Components',
-    settings: 'System Settings',
-    baseSettings: 'Base Settings'
+    systemManage: 'System Manage',
+    userList: 'User List',
+    userDetail: 'User Detail',
+    roleList: 'Role List',
+    roleDetail: 'Role Detail',
+    systemSetting: 'System Setting',
+    baseSetting: 'Base Setting'
   },
   pages: {
     common: {

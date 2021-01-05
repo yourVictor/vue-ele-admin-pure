@@ -1,14 +1,13 @@
 export default {
   routes: {
     dashboard: '后台首页',
-    member: '用户管理',
-    memberList: '用户列表',
-    memberDetail: '用户详情',
-    components: '组件',
-    baseComponents: '基础组件',
-    complexComponents: '复杂组件',
-    settings: '系统设置',
-    baseSettings: '基本设置'
+    systemManage: '系统管理',
+    userList: '用户列表',
+    userDetail: '用户详情',
+    roleList: '角色列表',
+    roleDetail: '角色详情',
+    systemSetting: '系统设置',
+    baseSetting: '基本设置'
   },
   pages: {
     common: {
