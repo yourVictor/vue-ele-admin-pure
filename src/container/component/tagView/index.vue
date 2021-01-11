@@ -1,7 +1,7 @@
 <template>
   <div class="tag-view-container">
     <el-tag
-      v-if="visitedTagViews.length === 1 && visitedTagViews[0].path === '/dashboard'"
+      v-if="visitedTagViews.length === 1 && visitedTagViews[0].path === '/dashboard/index'"
       :class="$route.path === visitedTagViews[0].path ? 'active' : ''"
       type="success"
       size="small"
@@ -67,7 +67,8 @@ export default {
       setTimeout(() => {
         if (currentActiveFlag) {
           if (this.visitedTagViews.length) {
-            this.$router.push({ path: this.visitedTagViews[0].path, query: { backFlag: true } })
+            const toIndex = index - 1 > -1 ? index - 1 : 0
+            this.$router.push({ path: this.visitedTagViews[toIndex].path, query: { backFlag: true } })
           } else {
             this.$router.push({ path: '/' })
           }

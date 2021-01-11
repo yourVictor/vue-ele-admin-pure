@@ -12,19 +12,19 @@
           <el-input v-model="formData.roleDesc" type="textarea" placeholder="角色描述" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="分配资源：" prop="resourceList" :rules="commonRule.noNullRule">
-          <!-- <resource :checked.sync="formData.resourceList" @change="changeResource" /> -->
+          <resource :checked.sync="formData.resourceList" @change="changeResource" />
         </el-form-item>
       </template>
     </form-page>
   </div>
 </template>
 <script>
-// import resource from './resource'
+import resource from './resource'
 import './index.scss'
 export default {
   name: 'roleDetail',
   components: {
-    // resource
+    resource
   },
   metaInfo() {
     return {

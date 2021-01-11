@@ -5,11 +5,11 @@
         <el-button type="success" size="small" plain @click="$router.push({ name: 'roleAdd' })">新建角色</el-button>
       </div>
       <template slot="table-column">
-        <el-table-column align="center" prop="key" label="key" min-width="100"></el-table-column>
+        <el-table-column align="center" prop="key" label="key" width="150"></el-table-column>
         <el-table-column align="center" prop="roleName" label="角色名称" min-width="100"></el-table-column>
-        <el-table-column align="center" prop="mobile" label="角色描述" min-width="100"></el-table-column>
+        <el-table-column align="center" prop="roleDesc" label="角色描述" min-width="100"></el-table-column>
         <el-table-column align="center" prop="" label="操作" width="250" fixed="right">
-          <template slot-scope="scope">
+          <template v-if="scope.row.key !== 'admin'" slot-scope="scope">
             <el-button type="primary" size="mini" @click="$router.push({ name: 'roleEdit', params: { id: scope.row.id } })" plain>编辑</el-button>
             <el-button type="danger" size="mini" @click="operate(scope.row, 'update')" plain>删除</el-button>
           </template>
@@ -41,7 +41,10 @@ export default {
       },
       listLoading: false,
       listTotal: 0,
-      list: [{ key: 'hello' }]
+      list: [
+        { id: 1, key: 'admin', roleName: '超级管理员', roleDesc: '拥有系统所有权限' },
+        { id: 1, key: 'contact', roleName: '客服', roleDesc: '拥有客服相关权限' }
+      ]
     }
   },
   computed: {

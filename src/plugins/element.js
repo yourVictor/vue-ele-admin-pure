@@ -21,6 +21,7 @@ import {
   Input,
   Button,
   Switch,
+  Checkbox,
   DatePicker,
   Popover,
   Badge,
@@ -66,6 +67,7 @@ Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Button)
 Vue.use(Switch)
+Vue.use(Checkbox)
 Vue.use(DatePicker)
 Vue.use(Popover)
 Vue.use(Badge)

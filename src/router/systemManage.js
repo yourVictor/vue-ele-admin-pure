@@ -10,7 +10,14 @@ export default {
     {
       path: 'user/list',
       name: 'user',
-      meta: { title: 'routes.userList', showParent: true, keepAlive: true },
+      meta: {
+        title: 'routes.userList',
+        showParent: true,
+        keepAlive: true,
+        buttons: {
+          detail: { label: '查看详情', enabled: true }
+        }
+      },
       component: () => import(/* webpackChunkName: "systemManage" */ '@/views/systemManage/user/list/index.vue')
     },
     {
@@ -22,7 +29,15 @@ export default {
     {
       path: 'role/list',
       name: 'role',
-      meta: { title: 'routes.roleList', showParent: true, keepAlive: true },
+      meta: {
+        title: 'routes.roleList',
+        showParent: true,
+        keepAlive: true,
+        buttons: {
+          add: { label: '新建', enabled: true },
+          edit: { label: '编辑', enabled: true }
+        }
+      },
       component: () => import(/* webpackChunkName: "systemManage" */ '@/views/systemManage/role/list/index.vue')
     },
     {

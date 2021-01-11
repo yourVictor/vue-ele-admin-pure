@@ -1,7 +1,10 @@
 <template>
   <div class="form-page-container">
     <el-form :ref="refName" :model="formData" :label-width="labelWidth" :disabled="disabled">
-      <slot></slot>
+      <div class="block-header" v-if="blockHeader">
+        <div>{{ blockHeader }}</div>
+      </div>
+      <slot name="formContent"></slot>
       <el-form-item v-if="!disabled" label="">
         <slot name="btns"></slot>
         <el-button type="success" size="medium" :btnLoading="btnLoading" @click="save" plain>保存</el-button>
@@ -27,6 +30,10 @@ export default {
       default() {
         return {}
       }
+    },
+    blockHeader: {
+      type: String,
+      default: ''
     },
     labelWidth: {
       type: String,

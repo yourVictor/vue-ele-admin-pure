@@ -2,7 +2,7 @@
   <div class="resource-wrapper">
     <el-tree ref="tree" :data="treeData" show-checkbox node-key="id" :default-checked-keys="checked" :props="defaultProps" @check-change="treeCheckChange" default-expand-all>
       <span class="custom-tree-node" slot-scope="{ node, data }">
-        <span>{{ node.label }}</span>
+        <span>{{ $t(node.label) }}</span>
         <template v-if="data.buttons && data.buttons.length">
           <span>&nbsp;&nbsp;&nbsp; --- &nbsp;&nbsp;&nbsp;</span>
           <span class="node-btns">
