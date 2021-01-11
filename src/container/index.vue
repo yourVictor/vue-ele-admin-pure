@@ -12,7 +12,7 @@
             :duration="{ enter: 600, leave: 200 }"
           >
             <keep-alive v-show="show" :include="keepAliveRoute.join(',')">
-              <router-view ref="child-ref" :style="'min-height:' + (bodyHeight - 86 - (sidebar.hidden ? -36 : 40)) + 'px;box-sizing: border-box'" />
+              <router-view class="page-contaner" ref="child-ref" :style="'min-height:' + (bodyHeight - 86 - (sidebar.hidden ? -36 : 40)) + 'px;box-sizing: border-box'" />
             </keep-alive>
           </transition>
           <to-top />

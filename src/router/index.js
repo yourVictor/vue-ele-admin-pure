@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Container from '@/container/index'
+import dashboard from '@/router/dashboard'
 import systemManage from '@/router/systemManage'
 import systemSetting from '@/router/systemSetting'
 
@@ -25,23 +25,15 @@ export const constantRouterMap = [
     name: 'login',
     meta: { title: '登录', hidden: true },
     component: () => import(/* webpackChunkName: "account" */ '@/views/account/login/index.vue')
-  },
-  {
-    path: '',
-    meta: { title: 'routes.dashboard', icon: 'el-icon-extend-dashboard' },
-    redirect: '/dashboard',
-    component: Container,
-    children: [
-      {
-        path: 'dashboard',
-        name: 'dashboard',
-        meta: { title: 'routes.dashboard', showParent: false },
-        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue')
-      }
-    ]
   }
 ]
 export const asyncRouterMap = [
+  {
+    path: '',
+    redirect: '/dashboard',
+    meta: { hidden: true }
+  },
+  dashboard,
   systemManage,
   systemSetting,
   {

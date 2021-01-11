@@ -2,10 +2,11 @@ export default {
   routes: {
     dashboard: '后台首页',
     systemManage: '系统管理',
-    userList: '用户列表',
-    userDetail: '用户详情',
+    userList: '账号列表',
+    userDetail: '账号详情',
     roleList: '角色列表',
-    roleDetail: '角色详情',
+    roleAdd: '新建角色',
+    roleEdit: '角色编辑',
     systemSetting: '系统设置',
     baseSetting: '基本设置'
   },

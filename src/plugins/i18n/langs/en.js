@@ -5,7 +5,8 @@ export default {
     userList: 'User List',
     userDetail: 'User Detail',
     roleList: 'Role List',
-    roleDetail: 'Role Detail',
+    roleAdd: 'Role Add',
+    roleEdit: 'Role Edit',
     systemSetting: 'System Setting',
     baseSetting: 'Base Setting'
   },

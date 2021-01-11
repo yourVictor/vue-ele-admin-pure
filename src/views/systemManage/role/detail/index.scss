@@ -1,3 +1,22 @@
-.member-detail-container{
-  padding: 24px;
+.role-detail-container{
+
+  .el-tree>.el-tree-node {
+    
+    .el-tree-node__content{
+      height: auto;
+      align-items: flex-start;
+  
+      .custom-tree-node{
+        @include sub-item;
+  
+        .node-btns{
+          display: inline-flex;
+          flex-wrap: wrap;
+        }
+      }
+    }
+    &>.el-tree-node__content{
+      align-items: center;
+    }
+  }
 }

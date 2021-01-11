@@ -32,4 +32,11 @@
     max-width: 100%;
     background: #fff;
   }
+  .page-contaner{
+    padding: 20px;
+
+    &.dashboard-container{
+      padding: 0;
+    }
+  }
 }

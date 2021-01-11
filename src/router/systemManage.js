@@ -9,7 +9,7 @@ export default {
   children: [
     {
       path: 'user/list',
-      name: 'userList',
+      name: 'user',
       meta: { title: 'routes.userList', showParent: true, keepAlive: true },
       component: () => import(/* webpackChunkName: "systemManage" */ '@/views/systemManage/user/list/index.vue')
     },
@@ -21,15 +21,22 @@ export default {
     },
     {
       path: 'role/list',
-      name: 'roleList',
+      name: 'role',
       meta: { title: 'routes.roleList', showParent: true, keepAlive: true },
       component: () => import(/* webpackChunkName: "systemManage" */ '@/views/systemManage/role/list/index.vue')
     },
     {
-      path: 'role/:id/detail',
-      name: 'roleDetail',
-      meta: { title: 'routes.roleDetail', hidden: true, index: '/systemManage/role/list' },
+      path: 'role/add',
+      name: 'roleAdd',
+      meta: { title: 'routes.roleAdd', hidden: true, index: '/systemManage/role/list' },
       component: () => import(/* webpackChunkName: "systemManage" */ '@/views/systemManage/role/detail/index.vue')
+    },
+    {
+      path: 'role/:id/edit',
+      name: 'roleEdit',
+      meta: { title: 'routes.roleEdit', hidden: true, index: '/systemManage/role/list' },
+      component: () => import(/* webpackChunkName: "systemManage" */ '@/views/systemManage/role/detail/index.vue'),
+      props: true
     }
   ]
 }
