@@ -12,9 +12,9 @@
       v-if="pagination"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page="listQuery.pageNo"
+      :current-page="listQuery[pageKey]"
       :page-sizes="[10, 20, 50, 100]"
-      :page-size="listQuery.pageSize"
+      :page-size="listQuery[pageSizeKey]"
       :total="listTotal"
       layout="total, sizes, prev, pager, next, jumper"
       background
@@ -42,88 +42,25 @@ export default {
     SearchForm
   },
   props: {
-    queryConfig: {
-      type: Array,
-      default() {
-        return []
-      }
-    },
-    spanConfig: {
-      type: Object,
-      default() {
-        return { sm: 24, md: 12, lg: 8, xl: 6 }
-      }
-    },
-    listQuery: {
-      type: Object,
-      default() {
-        return {
-          pageNo: 1,
-          pageSize: 10
-        }
-      }
-    },
-    list: {
-      type: Array,
-      default() {
-        return []
-      }
-    },
-    indexColumn: {
-      type: Boolean,
-      default: true
-    },
-    listLoading: {
-      type: Boolean,
-      default: false
-    },
-    listTotal: {
-      type: Number,
-      default: 0
-    },
-    pagination: {
-      // 是否分页
-      type: Boolean,
-      default: true
-    },
-    dialog: {
-      type: Boolean,
-      default: false
-    },
-    dialogTitle: {
-      type: String,
-      default: ''
-    },
-    dialogFormVisible: {
-      type: Boolean,
-      default: false
-    },
-    btnLoading: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    refName: {
-      type: String,
-      default: 'form'
-    },
-    formData: {
-      type: Object,
-      default() {
-        return {}
-      }
-    },
-    labelWidth: {
-      type: Number,
-      default: 96
-    },
-    selectColumn: {
-      type: Boolean,
-      default: false
-    }
+    queryConfig: { type: Array, default: () => [] },
+    spanConfig: { type: Object, default: () => ({ sm: 24, md: 12, lg: 8, xl: 6 }) },
+    listQuery: { type: Object, default: () => ({}) },
+    list: { type: Array, default: () => [] },
+    indexColumn: { type: Boolean, default: true },
+    listLoading: { type: Boolean, default: false },
+    listTotal: { type: Number, default: 0 },
+    pagination: { type: Boolean, default: true }, // 是否分页
+    pageKey: { type: String, default: 'pageNo' },
+    pageSizeKey: { type: String, default: 'pageSize' },
+    dialog: { type: Boolean, default: false },
+    dialogTitle: { type: String, default: '' },
+    dialogFormVisible: { type: Boolean, default: false },
+    btnLoading: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    refName: { type: String, default: 'form' },
+    formData: { type: Object, default: () => ({}) },
+    labelWidth: { type: Number, default: 96 },
+    selectColumn: { type: Boolean, default: false }
   },
   computed: {
     dialogFormVisibleSub: {
@@ -137,23 +74,20 @@ export default {
   },
   methods: {
     search() {
-      this.$emit('fetchData', {
-        ...this.listQuery,
-        pageNo: 1
-      })
+      const listQuery = { ...this.listQuery }
+      listQuery[this.pageKey] = 1
+      this.$emit('fetchData', listQuery)
     },
     handleSizeChange(val) {
-      this.$emit('fetchData', {
-        ...this.listQuery,
-        pageNo: 1,
-        pageSize: val
-      })
+      const listQuery = { ...this.listQuery }
+      listQuery[this.pageKey] = 1
+      listQuery[this.pageSizeKey] = val
+      this.$emit('fetchData', listQuery)
     },
     handleCurrentChange(val) {
-      this.$emit('fetchData', {
-        ...this.listQuery,
-        pageNo: val
-      })
+      const listQuery = { ...this.listQuery }
+      listQuery[this.pageSizeKey] = val
+      this.$emit('fetchData', listQuery)
     },
     handleSelectionChange(val) {
       this.$emit('selectionChange', val)
